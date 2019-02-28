@@ -4,6 +4,9 @@
 
 ### Usage:
 ```shell
+1. generate data first:
+$psql>\i pet_infos_50_mix.sql
+
 $ cd app
 $ node bin/www
 search localhost:3000/pet
