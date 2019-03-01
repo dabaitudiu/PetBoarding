@@ -19,10 +19,11 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	// Retrieve Information
     var gender  = req.body.sex;
-    console.log("!!!!!!!!!gender is " + gender);
+    var species = req.body.species;
+    var house = req.body.house;
 	
 	// Construct Specific SQL Query
-    var sql_query = "SELECT * from pet_infos_50_mix WHERE gender='"+gender+"'";
+    var sql_query = "SELECT * from pet_infos_1000 WHERE species='"+species+"'" + "and gender='"+gender+"'" + "and house_type='"+house+"'";
     
     pool.query(sql_query, (err, data) => {
 		res.render('pet_database', { title: 'Database Connect', data: data.rows });

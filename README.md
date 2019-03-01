@@ -31,3 +31,8 @@ Option 2: The ER model must have at least a total of 15 entity/relationship sets
 
 - Optimize table UI
 - Construction of Whole webpage's front end.
+- Sub class of dogs,cats,etc.
+- Owner name add Hyperlink in the result list.
+- Price range: now we restrict the users must input two bound. We want to allow the user: (1) leave both blank (2) leave one blank.
+- Date: we want to make a calendar.
+- Every time after searching: "There are x results found."

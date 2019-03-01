@@ -2,7 +2,7 @@
 <html>
   <head>
 		<!-- Page Title -->
-    <title>CS2102 About Page</title>
+    <title>Pet Search Engine</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 		
 		<!-- CSS for Styling -->
@@ -18,11 +18,51 @@
     <p>Welcome to <%= title%> Page</p>
 
     <h2>Please specify your constraints on pet keepers:</h2>
-    <p>Gender:</p>
 
     <form id="html_form" action="pet" role="form" method="post">
+      <p>
+      Gender:
 			<input type="radio" name="sex" value="male" checked>Male
       <input type="radio" name="sex" value="female">Female
+      </p>
+      <p>
+        Species:
+      <select name="species">
+        <option value="dog">dog</option>
+        <option value="cat">cat</option>
+        <option value="parrot">parrot</option>
+        <option value="fish">fish</option>
+        <option value="hawk">hawk</option>
+        <option value="horse">horse</option>
+        <option value="fish">duck</option>
+        <option value="other">others</option>
+      </select>
+      </p>
+      <p>
+          Years:
+          <select name="years">
+            <option value="0-3">0-3</option>
+            <option value="3-5">3-5</option>
+            <option value="6-10">6-10</option>
+            <option value="10+">10+</option>
+          </select>
+          </p>
+      <p>
+        House Type:
+        <select name="house">
+          <option value="house with swimming pool">house with swimming pool</option>
+          <option value="house with yard">house with yard</option>
+          <option value="big house">big house</option>
+          <option value="middle house">middle house</option>
+          <option value="small house">small house</option>
+        </select>
+      </p>
+      <p>
+          Price Range:<input type="text" name="price_min">~<input type="text" name="price_max">
+      </p>
+      <p>
+        Date:<input id="date" type="date" name="start_date">~<input id="date" type="date" name="end_date">
+      </p>
       <br>
       <br>
       <button type="submit" class="btn btn-primary">Submit</button>
