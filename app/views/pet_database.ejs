@@ -1,38 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Table V04</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-<!--===============================================================================================-->
-<link rel='stylesheet' href='/stylesheets/style.css' />
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+     
+    
+    <title>Pet Database</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+      :root {
+			--jumbotron-padding-y: 3rem;
+		}
 		
-<!-- CSS for Styling -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		.jumbotron {
+			padding-top: var(--jumbotron-padding-y);
+			padding-bottom: var(--jumbotron-padding-y);
+			margin-bottom: 0;
+			background-color: #fff;
+		}
+		@media (min-width: 768px) {
+			.jumbotron {
+			padding-top: calc(var(--jumbotron-padding-y) * 2);
+			padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+			}
+		}
+		
+		.jumbotron p:last-child {
+			margin-bottom: 0;
+		}
+		
+		.jumbotron-heading {
+			font-weight: 300;
+		}
+		
+		.jumbotron .container {
+			max-width: 40rem;
+		}
+		
+		footer {
+			padding-top: 3rem;
+			padding-bottom: 3rem;
+		}
+		
+		footer p {
+			margin-bottom: .25rem;
+		}
+		
+		.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+    </style>
 
-<!-- JavaScript for Interactivity -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<!--===============================================================================================-->
-
-</head>
+  </head>
 <body>
+	<header>
+		<div class="collapse bg-dark" id="navbarHeader">
+			<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-md-7 py-4">
+				<h4 class="text-white">About</h4>
+				<p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+				</div>
+				<div class="col-sm-4 offset-md-1 py-4">
+				<h4 class="text-white">Contact</h4>
+				<ul class="list-unstyled">
+					<li><a href="#" class="text-white">Follow on Twitter</a></li>
+					<li><a href="#" class="text-white">Like on Facebook</a></li>
+					<li><a href="#" class="text-white">Email me</a></li>
+				</ul>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="navbar navbar-dark bg-dark box-shadow">
+			<div class="container d-flex justify-content-between">
+			<a href="#" class="navbar-brand d-flex align-items-center">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+				<strong>Album</strong>
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			</div>
+		</div>
+	</header>
+		
 	<p><button type="button" class="btn btn-primary" onclick="window.location.href='/pet'">Return to Search Engine</button></p>
 	<div class="limiter">
 		<div class="container-table100">
@@ -44,8 +99,10 @@
 								<tr class="row100 head">
 									<th class="cell100 column1">Owner</th>
 									<th class="cell100 column4">Ratings</th>
-									<th class="cell100 column4">Species</th> <!--Here we need to show all the services the owner can provide.-->
-									<th class="cell100 column4">Pet Gender</th> <!--Here we need to show all the available pet gender.-->
+									<th class="cell100 column4">Species</th> 
+									Here we need to show all the services the owner can provide.
+									<th class="cell100 column4">Pet Gender</th> 
+									here we need to show all the available pet gender
 									<th class="cell100 column4">House_type</th>									
 									<th class="cell100 column4">Price</th>
 									<th class="cell100 column4">Available from:</th>									
@@ -67,11 +124,11 @@
 										<td class="cell100 column4"><%= data[i].house_type%></td>
 										<td class="cell100 column4"><%= data[i].price%></td>
 										<td class="cell100 column4"><%= data[i].date_start%></td>
-										<td class="cell100 column4"><%= data[i].date_end%></td>
-										<!--Here we need to add a url link to direct to the owner's detail's information.-->
-										<!--And finally, we need to optimize the result UI, making it like Trip advisors or similar things.-->
+										<td class="cell100 column4"><%= data[i].date_end%></td> -->
+										<!-- Here we need to add a url link to direct to the owner's detail's information -->
+										<!-- And finally, we need to optimize the result UI, making it like Trip advisors or similar things -->
 									</tr>
-									<% } %>
+								<% } %>
 							</tbody>
 						</table>
 					</div>
@@ -81,28 +138,9 @@
 	</div>
 
 
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	<script>
-		$('.js-pscroll').each(function(){
-			var ps = new PerfectScrollbar(this);
-
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
-			
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
 </body>
 </html>
