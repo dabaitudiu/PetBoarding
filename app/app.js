@@ -30,6 +30,9 @@ var petRouter = require('./routes/pet');
 var petDataRouter = require('./routes/pet_database');
 /* ---------------------------- */
 
+/* --- DIY: User log in---*/
+var loginRouter = require('./routes/login');
+
 var app = express();
 
 // view engine setup
@@ -69,6 +72,7 @@ app.use('/insert', insertRouter);
 
 app.use('/pet',petRouter);
 app.use('/pet_database',petDataRouter);
+app.use('/login', loginRouter);
 
 
 // catch 404 and forward to error handler
