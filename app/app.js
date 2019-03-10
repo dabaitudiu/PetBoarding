@@ -7,9 +7,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-/* --- V2: Adding Web Pages --- */
-var aboutRouter = require('./routes/about');
-/* ---------------------------- */
 
 /* --- V3: Basic Template   --- */
 var tableRouter = require('./routes/table');
@@ -48,8 +45,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-/* --- V2: Adding Web Pages --- */
-app.use('/about', aboutRouter);
 /* ---------------------------- */
 
 /* --- V3: Basic Template   --- */

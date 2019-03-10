@@ -15,7 +15,8 @@ var sql_query = 'SELECT * FROM pet_infos_50';
 
 router.get('/', function(req, res, next) {
 	pool.query(sql_query, (err, data) => {
-		res.render('pet_database', { title: 'Available House Owners Requirements', data: data.rows });
+    // res.render('pet_database', { title: 'Available House Owners Requirements', data: data.rows });
+    res.render('pet_database', { title: 'Available House Owners Requirements'});
 	});
 });
 
