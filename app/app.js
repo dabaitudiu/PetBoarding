@@ -33,6 +33,7 @@ var petDataRouter = require('./routes/pet_database');
 /* --- DIY: User log in & signup---*/
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
+var user_accRouter = require('./routes/user_acc');
 
 var app = express();
 
@@ -75,6 +76,7 @@ app.use('/pet',petRouter);
 app.use('/pet_database',petDataRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
+app.use('/user_acc', user_accRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
