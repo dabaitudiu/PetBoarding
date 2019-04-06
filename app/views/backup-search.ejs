@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html style="height:100%;width:100%;overflow:hidden;">
+<head>
+   <title>Database</title>
+   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/css/style.css" rel="stylesheet" type="text/css">
+   <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+   <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="bar"><%= title%></h1></div>
+    <div class="main-box"> 
+            
+        <div class="row" style="height: 100%;">
+                <!-- Left Serach Bar -->
+                <div class="col-md-3" style="height: 100%; padding-right: 0px;padding-left:10px;">
+                    <div style="padding-left: 5px;background-color:white;height: 100%">
+                        <form id="html_form" action="search" role="form" method="post">
+
+                            <!-- Pet Types -->
+                            <div id="pet_type" style="padding-top:10px; text-align:center">
+                                <label for="pet_type_select">Pet Species:</label>
+                                <select class="form-control" name="species" style="width:50%; position: relative;left: 25%">
+                                    <option value="dog">dog</option>
+                                    <option value="cat">cat</option>
+                                    <option value="parrot">parrot</option>
+                                    <option value="fish">fish</option>
+                                    <option value="hawk">hawk</option>
+                                    <option value="horse">horse</option>
+                                    <option value="fish">duck</option>
+                                    <option value="other">others</option>
+                                </select>
+                            </div>
+
+                            <!-- Pet Age -->
+                            <div id="pet_age" style="padding-top:10px; text-align:center">
+                                <label for="pet_age_select">Pet's Age</label>
+                                <select class="form-control" name="years" style="width:50%; position: relative;left: 25%">
+                                    <option value="0-3">0-3</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="6-10">6-10</option>
+                                    <option value="10+">10+</option>
+                                </select>
+                            </div>
+
+                            <!-- Date -->
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                                    <div class="form-group col-md-6">
+                                      <label for="From">From</label>
+                                      <input class="form-control" type="date" name="start_date" value="2018-08-19">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="inputState">To</label>
+                                      <input class="form-control" type="date" name="end_date" value="2018-08-19">
+                                    </div>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                                <div class="form-group col-md-6">
+                                    <label for="From">Min Price</label>
+                                    <input type="text" placeholder="Min" name="price_min">
+                                </div>         
+                                <div class="form-group col-md-6">
+                                    <label for="From">Min Price</label>
+                                    <input type="text" placeholder="Min" name="price_min">
+                                </div>
+                            </div>
+
+                            <!-- House Type -->
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                                <label for="exampleFormControlSelect1">House Type</label>
+                                <select class="form-control" name="house" style="width:70%; position: relative;left: 15%">
+                                    <option value="house with swimming pool">house with swimming pool</option>
+                                    <option value="house with yard">house with yard</option>
+                                    <option value="big house">big house</option>
+                                    <option value="middle house">middle house</option>
+                                    <option value="small house">small house</option>
+                                </select>
+                            </div>
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Result Area -->
+                <div class="col-md-9" style="height: 100%; padding-right: 5px; padding-left:5px;" >
+                    <div style="padding-left: 5px; background-color:white;height: 100%;">
+                            
+                            <p><a href="<%= link %>" class="btn btn-primary" role="button">Download</a></p>
+                            
+                            <% if (data.length === 0) {%>
+                                You can have a look of our collabrators before you decide
+                            <% } else {%>
+                                HEYYYYYYYY<%= data[0].owner_name %>
+                                <div style="font-size:50px; padding:20px;">Here are what we found for you!</div>
+                                <table class="table table-striped">
+                                    <tbody>			
+                                        <% for(var i=0; i<data.length; i++) { %>
+                                            <tr class="row100 body">
+                                                <td id="result_name"><%= data[i].owner_name%></td>
+                                                <td><%= data[i].ratings%></td>
+                                                <td><%= data[i].species%></td>
+                                                <td><%= data[i].gender%></td>
+                                                <td><%= data[i].house_type%></td>
+                                                <td><%= data[i].price%></td>
+                                                <td><%= moment(data[i].date_start).format( 'MMM-DD-YYYY')%></td>
+                                                <td><%= moment(data[i].date_end).format( 'MMM-DD-YYYY')%></td>
+                                                <form action="appointment" method="GET">
+                                                        <input type="hidden" name="name" value="<%= data[i].owner_name %>"/>
+                                                        <input type="hidden" name="link" value="<%= link %>"/>
+                                                        <input type="submit" value="Contact Me"/>
+                                                </form>
+                                                <!-- Here we need to add a url link to direct to the owner's detail's information -->
+                                                <!-- And finally, we need to optimize the result UI, making it like Trip advisors or similar things -->
+                                            </tr>
+                                        <% } %>
+                                    </tbody>
+                                    </table>
+                            <% } %>
+
+                            
+
+                    </div>                    
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>

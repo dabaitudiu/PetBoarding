@@ -1,28 +1,14 @@
 # FindPetCaring
 
-## Next Deadline: March 10
+1. ./search: 搜索页面 搜索前右侧随便显示，搜索后右侧显示结果 (可选项卡形式， 可table形式).
+2. ./appointment: 预约界面
 
-### Usage:
-```shell
-1. generate data first:
-$psql>\i pet_infos_50_mix.sql
 
-$ cd app
-$ node bin/www
-search localhost:3000/pet
-```
 
-### Route description:
-- /pet_database: Full information of Service provider
-- /pet: Search Engine with specific constraints
 
-- Optimize table UI
-- Construction of Whole webpage's front end.
-- Sub class of dogs,cats,etc.
-- Owner name add Hyperlink in the result list.
-- Price range: now we restrict the users must input two bound. We want to allow the user: (1) leave both blank (2) leave one blank.
-- Date: we want to make a calendar.
-- Every time after searching: "There are x results found."
+
+
+
 
 1. Find all owners who are at least specialized in keeping '{}'. {} - pet name
 

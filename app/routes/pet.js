@@ -10,10 +10,13 @@ const pool = new Pool({
   port: 5432,
 })
 
+webpage_title = "宠物托管搜索"
+
 router.get('/', function(req, res, next) {
-  res.render('pet', { title: 'Pet Keeper Search Engine' });
+  res.render('pet', { title: webpage_title });
 });
 
+data = 0
 
 // POST
 router.post('/', function(req, res, next) {
@@ -24,9 +27,8 @@ router.post('/', function(req, res, next) {
 	
 	// Construct Specific SQL Query
     var sql_query = "SELECT * from pet_infos_1000 WHERE species='"+species+"'" + "and gender='"+gender+"'" + "and house_type='"+house+"'";
-    
     pool.query(sql_query, (err, data) => {
-		res.render('pet_database', { title: 'Database Connect', data: data.rows });
+		res.render('pet_database', { title: webpage_title, data: data.rows });
 	});
 });
 

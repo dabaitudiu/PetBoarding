@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html style="height:100%;width:100%;background-color:antiquewhite;">
+<head>
+   <title>Database</title>
+   <!-- <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
+   <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/cards-style.css" type="text/css" /> </head>
+
+</head>
+<body>
+    <div class="bar" ><%= title%></h1></div>
+    <div class="main-box" style="background-color:antiquewhite; overflow: scroll"> 
+            
+        <div class="row" style="height: 100%;">
+                <!-- Left Serach Bar -->
+                <div class="col-md-3" style="height: 100%; padding-right: 0px;padding-left:10px;">
+                    <div style="padding-left: 5px;background-color:white;height: 100%">
+                        <form id="html_form" action="search" role="form" method="post">
+
+                            <!-- Pet Types -->
+                            <div id="pet_type" style="padding-top:10px; text-align:center">
+                                <label for="pet_type_select">Pet Species:</label>
+                                <select class="form-control" name="species" style="width:50%; position: relative;left: 25%">
+                                    <option value="dog"></option>
+                                    <option value="dog">dog</option>
+                                    <option value="cat">cat</option>
+                                    <option value="parrot">parrot</option>
+                                    <option value="fish">fish</option>
+                                    <option value="hawk">hawk</option>
+                                    <option value="horse">horse</option>
+                                    <option value="fish">duck</option>
+                                    <option value="other">others</option>
+                                </select>
+                            </div>
+
+                            <!-- Pet Age -->
+                            <div id="pet_age" style="padding-top:10px; text-align:center">
+                                <label for="pet_age_select">Pet's Age</label>
+                                <select class="form-control" name="years" style="width:50%; position: relative;left: 25%">
+                                    <option value="0-3">0-3</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="6-10">6-10</option>
+                                    <option value="10+">10+</option>
+                                </select>
+                            </div>
+
+                            <!-- Date -->
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                                    <div class="form-group col-md-6">
+                                      <label for="From">From</label>
+                                      <input class="form-control" type="date" name="start_date" value="2018-08-19">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                      <label for="inputState">To</label>
+                                      <input class="form-control" type="date" name="end_date" value="2018-08-19">
+                                    </div>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                                <div class="form-group col-md-6">
+                                    <label for="From">Min Price</label>
+                                    <input type="text" placeholder="Min" name="price_min">
+                                </div>         
+                                <div class="form-group col-md-6">
+                                    <label for="From">Min Price</label>
+                                    <input type="text" placeholder="Min" name="price_min">
+                                </div>
+                            </div>
+
+                            <!-- House Type -->
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                                <label for="exampleFormControlSelect1">House Type</label>
+                                <select class="form-control" name="house" style="width:70%; position: relative;left: 15%">
+                                    <option value="house with swimming pool">house with swimming pool</option>
+                                    <option value="house with yard">house with yard</option>
+                                    <option value="big house">big house</option>
+                                    <option value="middle house">middle house</option>
+                                    <option value="small house">small house</option>
+                                </select>
+                            </div>
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Result Area -->
+                <div class="col-md-9" style="height: 100%; padding-right: 5px; padding-left:5px;" >
+                    <div style="padding-left: 5px; background-color:white;height: 100%;">
+                            <% console.log("Length of data:" + data.length) %>
+                            <% if (data.length === 0) {%>
+                                You can have a look of our collabrators before you decide
+                            <% } else {%>
+                                <div style="font-size:50px; padding:20px;">Here are what we found for you!</div>
+                                <div class="cards-2 section-gray">
+                                    <div class="container">
+                                        <% for (var j = 0; j <= data.length / 4; j++) {%>
+                                        <div class="row">
+                                            <% console.log("Length of j:" + j) %>
+                                            <% console.log("Left:" + parseInt(data.length - j * data.length / 4)) %>
+                                            <% var n = (j * 4 >= 0) ? parseInt(data.length - j * data.length / 4) : 4 %>
+                                            <% console.log("Length of n:" + n) %>
+                                            <% for (var i = 0; i < 4; i++) {%>
+                                                <div class="col-md-3">
+                                                        <div class="card card-blog">
+                                                            <div class="card-image">
+                                                                <a href="#" style="display: block"> <img class="img img-raised" src="/images/blog04.jpeg"> </a>
+                                                                <div class="ripple-cont"></div>
+                                                            </div>
+                                                            <div class="table">
+                                                                <h4 class="card-caption">
+                                                                    <a href="#" name="owner_name"><%= data[i].owner_name %></a>
+                                                                </h4>
+                                                                <div style="font-size:90%">
+                                                                    <p class="card-description"> Ratings: <%= data[i].ratings%> </p>
+                                                                    <p class="card-description"> Pet Type(s): <%= data[j * 4 + i].species%> </p>
+                                                                    <p class="card-description"> House Type: <%= data[j * 4 + i].house_type%> </p>
+                                                                    <p class="card-description"> <%= moment(data[j * 4 + i].date_start).format('MMM-DD-YYYY')%> - <%= moment(data[i].date_end).format('MMM-DD-YYYY')%></p>
+                                                                    <p class="card-description"> Price: <%= data[j * 4 + i].price%> </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            <% } %>
+                                        </div>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                
+                            <% } %>
+
+                            
+
+                    </div>                    
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>

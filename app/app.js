@@ -28,12 +28,14 @@ var insertRouter = require('./routes/insert');
 /* --- DIY:Pet Keeper Search ---*/
 var petRouter = require('./routes/pet');
 var petDataRouter = require('./routes/pet_database');
+var searchRouter = require('./routes/search')
 /* ---------------------------- */
 
 /* --- DIY: User log in & signup---*/
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var user_accRouter = require('./routes/user_acc');
+var appointRouter = require('./routes/appointment');
 
 var app = express();
 
@@ -49,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 /* ---------------------------- */
 
@@ -77,6 +80,8 @@ app.use('/pet_database',petDataRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/user_acc', user_accRouter);
+app.use('/search', searchRouter);
+app.use('/appointment', appointRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

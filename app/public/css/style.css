@@ -1,0 +1,43 @@
+body {
+  padding: 5px;
+  padding-top: 3px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+  background-color:#dedad8;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.happy {
+  background-color: bisque;
+  padding: 20%;
+  font: Helvetica;
+}
+
+.pos {
+  align-content: center;
+  color: brown;
+}
+
+.box {
+  background-color: bisque;
+  height: 100%;
+}
+
+.right-box {
+  background-color: coral;
+  height: 100%;
+}
+
+.bar { height: 10%; background-color: white ;top: 0 ; left: 0 ; width: 100%; text-align: center; font-size: 300%;}
+
+.main-box {
+  height: 90%; padding: 5px; top: 0 ; left: 0 ; width: 100%; 
+}
+
+
+.left-ul {
+  padding: 10px;
+}
