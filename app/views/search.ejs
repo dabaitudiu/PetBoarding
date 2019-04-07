@@ -11,7 +11,16 @@
    <link rel="stylesheet" href="/css/cards-style.css" type="text/css" /> </head>
 </head>
 <body>
-    <div class="bar"><%= title%></div>
+    <div class="bar">
+        <%= title%> 
+        <% if (typeof customer_name != 'undefined') {%>
+            <% console.log(customer_name)%>
+            <label for="aaa" style="background-color:bisque">Welcome! <%= customer_name%></label>
+        <% } else {%>
+            <a href="login">login</a>
+            <a href="signup">signup</a>
+        <% } %>
+    </div>
     <div class="main-box" style="background-color:beige;"> 
             
         <div class="row" style="height: 100%;">
@@ -137,7 +146,6 @@
                                                                 </div>
                                                                 <form action="owner_info" method="GET">
                                                                         <input type="hidden" name="name" value="<%= data[i].owner_name %>"/>
-                                                                        <input type="hidden" name="link" value="<%= link %>"/>
                                                                         <input type="submit" value="Contact Me"/>
                                                                 </form>
                                                             </div>
