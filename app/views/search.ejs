@@ -1,98 +1,200 @@
 <!DOCTYPE html>
-<html style="height:100%;width:100%; background-color:beige;">
-<head>
-   <title>Database</title>
-   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-   <link href="/css/style.css" rel="stylesheet" type="text/css">
-   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
-   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-   <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
-   <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="/css/cards-style.css" type="text/css" /> </head>
-</head>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+        
+    
+    <title>Find Keeper</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        body {
+        font-size: .875rem;
+        }
+
+        .feather {
+        width: 16px;
+        height: 16px;
+        vertical-align: text-bottom;
+        }
+
+        /*
+        * Sidebar
+        */
+
+        .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100; /* Behind the navbar */
+        padding: 0;
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px; /* Height of navbar */
+        height: calc(100vh - 48px);
+        padding-top: .5rem;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        }
+
+        .sidebar .nav-link {
+        font-weight: 500;
+        color: #333;
+        }
+
+        .sidebar .nav-link .feather {
+        margin-right: 4px;
+        color: #999;
+        }
+
+        .sidebar .nav-link.active {
+        color: #007bff;
+        }
+
+        .sidebar .nav-link:hover .feather,
+        .sidebar .nav-link.active .feather {
+        color: inherit;
+        }
+
+        .sidebar-heading {
+        font-size: .75rem;
+        text-transform: uppercase;
+        }
+
+        /*
+        * Navbar
+        */
+        
+        .navbar .form-control {
+        padding: .75rem 1rem;
+        border-width: 0;
+        border-radius: 0;
+        }
+
+        .form-control-dark {
+        color: #fff;
+        background-color: rgba(255, 255, 255, .1);
+        border-color: rgba(255, 255, 255, .1);
+        }
+
+        .form-control-dark:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+        }
+
+        /*
+        * Utilities
+        */
+
+        .border-top { border-top: 1px solid #e5e5e5; }
+        .border-bottom { border-bottom: 1px solid #e5e5e5; }
+    </style>
+
+    <!-- Custom styles for this template -->
+
+    </head>
+    
 <body>
-    <div class="bar"><%= title%></div>
-    <div class="main-box" style="background-color:beige;"> 
-            
-        <div class="row" style="height: 100%;">
-                <!-- Left Serach Bar -->
-                <div class="col-md-3" style="height: 100%; padding-right: 0px;padding-left:10px;">
-                    <div style="padding-left: 5px;background-color:white;height: 100%">
-                        <form id="html_form" action="search" role="form" method="post">
+     
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">PetCare</a>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="/pet">Sign out</a>
+        </li>
+        </ul>
+    </nav>
 
-                            <!-- Pet Types -->
-                            <div id="pet_type" style="padding-top:10px; text-align:center">
-                                <label for="pet_type_select">Pet Species:</label>
-                                <select class="form-control" name="species" style="width:50%; position: relative;left: 25%">
-                                    <option value=""></option>
-                                    <option value="dog">dog</option>
-                                    <option value="cat">cat</option>
-                                    <option value="parrot">parrot</option>
-                                    <option value="fish">fish</option>
-                                    <option value="hawk">hawk</option>
-                                    <option value="horse">horse</option>
-                                    <option value="fish">duck</option>
-                                    <option value="other">others</option>
-                                </select>
-                            </div>
-
-                            <!-- Pet Age -->
-                            <div id="pet_age" style="padding-top:10px; text-align:center">
-                                <label for="pet_age_select">Pet's Age</label>
-                                <select class="form-control" name="years" style="width:50%; position: relative;left: 25%">
-                                    <option value=""></option>
-                                    <option value="0-3">0-3</option>
-                                    <option value="3-5">3-5</option>
-                                    <option value="6-10">6-10</option>
-                                    <option value="10+">10+</option>
-                                </select>
-                            </div>
-
-                            <!-- Date -->
-                            <div class="form-row" style="padding-top:10px; text-align:center">
-                                    <div class="form-group col-md-6">
-                                      <label for="From">From</label>
-                                      <input class="form-control" type="date" name="start_date" value="2018-08-19">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="inputState">To</label>
-                                      <input class="form-control" type="date" name="end_date" value="2018-08-19">
-                                    </div>
-                            </div>
-
-                            <!-- Price -->
-                            <div class="form-row" style="padding-top:10px; text-align:center">
-                                <div class="form-group col-md-6">
-                                    <label for="From">Min Price</label>
-                                    <input type="text" placeholder="Min" name="price_min">
-                                </div>         
-                                <div class="form-group col-md-6">
-                                    <label for="From">Min Price</label>
-                                    <input type="text" placeholder="Min" name="price_min">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                         
+                    <form id="html_form" class="navbar-form navbar-left" action="search" role="form" method="post">
+                        <!-- Pet Types -->
+                        <div id="pet_type" class="form-group align-items-left" >
+                            <label for="pet_type_select">Pet Species:</label>
+                            <select class="form-control" name="species" style="width:70%;">
+                                <option value=""></option>
+                                <option value="dog">dog</option>
+                                <option value="cat">cat</option>
+                                <option value="parrot">parrot</option>
+                                <option value="fish">fish</option>
+                                <option value="hawk">hawk</option>
+                                <option value="horse">horse</option>
+                                <option value="duck">duck</option>
+                                <option value="other">others</option>
+                            </select>
+                        </div>
+        
+                        <!-- Pet Age -->
+                        <div id="pet_age" class="form-group">
+                            <label for="pet_age_select">Pet's Age</label>
+                            <select class="form-control" name="years" style="width:70%;">
+                                <option value=""></option>
+                                <option value="0-3">0-3</option>
+                                <option value="3-5">3-5</option>
+                                <option value="6-10">6-10</option>
+                                <option value="10+">10+</option>
+                            </select>
+                        </div>
+        
+                        <!-- Date -->
+                        <div class="form-group">
+                                <div class="form-group">
+                                    <label for="From">From</label>
+                                    <input class="form-control" type="date" name="start_date" value="2018-08-19" style="width:70%;">
                                 </div>
+                                <div class="form-group">
+                                    <label for="inputState">To</label>
+                                    <input class="form-control" type="date" name="end_date" value="2018-08-19" style="width:70%;">
+                                </div>
+                        </div>
+        
+                        <!-- Price -->
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="From">Min Price</label>
+                                <input type="text" placeholder="Min" name="price_min">
+                            </div>         
+                            <div class="form-group">
+                                <label for="From">Min Price</label>
+                                <input type="text" placeholder="Min" name="price_min">
                             </div>
-
-                            <!-- House Type -->
-                            <div class="form-row" style="padding-top:10px; text-align:center">
-                                <label for="exampleFormControlSelect1">House Type</label>
-                                <select class="form-control" name="house" style="width:70%; position: relative;left: 15%">
-                                    <option value="" selected="selected"></option>
-                                    <option value="house with swimming pool">house with swimming pool</option>
-                                    <option value="house with yard">house with yard</option>
-                                    <option value="big house">big house</option>
-                                    <option value="middle house">middle house</option>
-                                    <option value="small house">small house</option>
-                                </select>
-                            </div>
-                            <div class="form-row" style="padding-top:10px; text-align:center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+        
+                        <!-- House Type -->
+                        <div class="form-group" >
+                            <label for="exampleFormControlSelect1" >House Type</label>
+                            <select class="form-control" name="house" style="width:70%;">
+                                <option value="" selected="selected"></option>
+                                <option value="house with swimming pool">house with swimming pool</option>
+                                <option value="house with yard">house with yard</option>
+                                <option value="big house">big house</option>
+                                <option value="middle house">middle house</option>
+                                <option value="small house">small house</option>
+                            </select>
+                        </div>
+                        <div class="form-row" style="padding-top:10px; text-align:center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
                 </div>
-
-                <!-- Right Result Area -->
-                <div class="col-md-9" style="height: 100%; padding-right: 5px; padding-left:5px;" >
+            </nav>
+        
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <div style="padding-left: 5px; background-color:white;height: 100%;">
                             <% if (data.length === 0) {%>
                                 <div style="font-size:300%;">You can have a look of our collabrators before you decide:</div>
@@ -115,45 +217,52 @@
                                     <div style="font-size:50px; padding:20px;">Here are what we found for you!</div>
                                 <% } %>
                                 <div class="cards-2 section-gray">
-                                        <div class="container">
-                                            <%= console.log(data.length) %>
-                                            <% for (var i = 0; i < data.length; i++) {%>
-                                                <div class="col-md-3">
-                                                        <div class="card card-blog">
-                                                            <div class="card-image">
-                                                                 <img class="img img-raised" src="<%= data[i].owner_img_url%>" style="height: 200px;width: 300px;"> 
-                                                                <div class="ripple-cont"></div>
+                                    <div class="container">
+                                        <%= console.log(data.length) %>
+                                        <% for (var i = 0; i < data.length; i++) {%>
+                                            <div class="col-md-3">
+                                                    <div class="card card-blog">
+                                                        <div class="card-image">
+                                                                <img class="img img-raised" src="<%= data[i].owner_img_url%>" style="height: 200px;width: 300px;"> 
+                                                            <div class="ripple-cont"></div>
+                                                        </div>
+                                                        <div class="table">
+                                                            <h4 class="card-caption">
+                                                                <%= data[i].owner_name %>
+                                                            </h4>
+                                                            <div style="font-size:100%">
+                                                                <p class="card-description"> Ratings: <%= data[i].ratings%> </p>
+                                                                <p class="card-description"> Pet Type(s): <%= data[i].species%> </p>
+                                                                <p class="card-description"> House Type: <%= data[i].house_type%> </p>
+                                                                <p class="card-description"> <%= moment(data[i].date_start).format('MMM-DD-YYYY')%> - <%= moment(data[i].date_end).format('MMM-DD-YYYY')%></p>
+                                                                <p class="card-description"> Price: <%= data[i].price%> </p>
                                                             </div>
-                                                            <div class="table">
-                                                                <h4 class="card-caption">
-                                                                    <%= data[i].owner_name %>
-                                                                </h4>
-                                                                <div style="font-size:100%">
-                                                                    <p class="card-description"> Ratings: <%= data[i].ratings%> </p>
-                                                                    <p class="card-description"> Pet Type(s): <%= data[i].species%> </p>
-                                                                    <p class="card-description"> House Type: <%= data[i].house_type%> </p>
-                                                                    <p class="card-description"> <%= moment(data[i].date_start).format('MMM-DD-YYYY')%> - <%= moment(data[i].date_end).format('MMM-DD-YYYY')%></p>
-                                                                    <p class="card-description"> Price: <%= data[i].price%> </p>
-                                                                </div>
-                                                                <form action="owner_info" method="GET">
-                                                                        <input type="hidden" name="name" value="<%= data[i].owner_name %>"/>
-                                                                        <input type="hidden" name="link" value="<%= link %>"/>
-                                                                        <input type="submit" value="More Info"/>
-                                                                </form>
-                                                            </div>
+                                                            <form action="owner_info" method="GET">
+                                                                    <input type="hidden" name="name" value="<%= data[i].owner_name %>"/>
+                                                                    <input type="hidden" name="link" value="<%= link %>"/>
+                                                                    <input type="submit" value="More Info"/>
+                                                            </form>
                                                         </div>
                                                     </div>
-                                            <% } %>
-                                        </div>
+                                                </div>
+                                        <% } %>
                                     </div>
+                                </div>
                             <% } %>
-
-                            
-
-                    </div>                    
+                    </div>   
+        
                 </div>
+        
+            </main>
         </div>
     </div>
 
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
 </body>
 </html>
