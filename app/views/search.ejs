@@ -24,6 +24,7 @@
                             <div id="pet_type" style="padding-top:10px; text-align:center">
                                 <label for="pet_type_select">Pet Species:</label>
                                 <select class="form-control" name="species" style="width:50%; position: relative;left: 25%">
+                                    <option value=""></option>
                                     <option value="dog">dog</option>
                                     <option value="cat">cat</option>
                                     <option value="parrot">parrot</option>
@@ -39,6 +40,7 @@
                             <div id="pet_age" style="padding-top:10px; text-align:center">
                                 <label for="pet_age_select">Pet's Age</label>
                                 <select class="form-control" name="years" style="width:50%; position: relative;left: 25%">
+                                    <option value=""></option>
                                     <option value="0-3">0-3</option>
                                     <option value="3-5">3-5</option>
                                     <option value="6-10">6-10</option>
@@ -74,6 +76,7 @@
                             <div class="form-row" style="padding-top:10px; text-align:center">
                                 <label for="exampleFormControlSelect1">House Type</label>
                                 <select class="form-control" name="house" style="width:70%; position: relative;left: 15%">
+                                    <option value="" selected="selected"></option>
                                     <option value="house with swimming pool">house with swimming pool</option>
                                     <option value="house with yard">house with yard</option>
                                     <option value="big house">big house</option>
@@ -106,19 +109,24 @@
                                     Facebook
                                 </div>
                             <% } else {%>
-                                <div style="font-size:50px; padding:20px;">Here are what we found for you!</div>
+                                <% if (hasInput === 0) { %>
+                                    <div style="font-size:50px; padding:20px;">You must specify at least one constraint. No matter, have a look at our recommendations!</div>
+                                <% } else {%>
+                                    <div style="font-size:50px; padding:20px;">Here are what we found for you!</div>
+                                <% } %>
                                 <div class="cards-2 section-gray">
                                         <div class="container">
+                                            <%= console.log(data.length) %>
                                             <% for (var i = 0; i < data.length; i++) {%>
                                                 <div class="col-md-3">
                                                         <div class="card card-blog">
                                                             <div class="card-image">
-                                                                <a href="#" style="display: block"> <img class="img img-raised" src="/images/blog04.jpeg"> </a>
+                                                                 <img class="img img-raised" src="<%= data[i].owner_url%>" style="height: 200px;width: 300px;"> 
                                                                 <div class="ripple-cont"></div>
                                                             </div>
                                                             <div class="table">
                                                                 <h4 class="card-caption">
-                                                                    <a href="#" name="owner_name"><%= data[i].owner_name %></a>
+                                                                    <%= data[i].owner_name %>
                                                                 </h4>
                                                                 <div style="font-size:100%">
                                                                     <p class="card-description"> Ratings: <%= data[i].ratings%> </p>

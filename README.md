@@ -3,7 +3,42 @@
 1. ./search: 搜索页面 搜索前右侧随便显示，搜索后右侧显示结果 (可选项卡形式， 可table形式).
 2. ./appointment: 预约界面
 
+### 表说明：
 
+**pet_infos_1000 等文件已经弃用！**
+
+#### Owner Service：
+```sql
+create table owner_service (
+	owner_id VARCHAR(9),
+	species VARCHAR(6),
+	years VARCHAR(4),
+	house_type VARCHAR(24),
+	price INT,
+	date_start DATE,
+	date_end DATE
+);
+```
+- Initialize at **owner_service.sql**
+- 映射关系之后要再好好改一下。。
+
+#### Owner Info：
+```sql
+create table Owner_Personal_Info (
+	owner_id VARCHAR(9),
+	owner_name VARCHAR(50),
+	owner_email VARCHAR(50),
+	owner_gender VARCHAR(50),
+	owner_intro TEXT,
+	date_entered DATE,
+	owner_phone VARCHAR(50),
+	owner_img_url VARCHAR(50),
+	owner_address VARCHAR(50),
+	owner_states VARCHAR(50)
+);
+```
+- Initialize at **Owner_Personal_Info.sql**
+- 这里owner_id应该是primary key了吧 不过owner_info和owner_service谁foreign谁要考虑一下
 
 
 

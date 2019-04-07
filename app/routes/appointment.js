@@ -22,11 +22,10 @@ var owner_name=''
 router.get('/', function(req, res, next) {
     var name = req.owner_name;
     var d = url.parse(req.url,true).query.name;
-
     var arg = url.parse(req.url).query;
-	var params = querystring.parse(arg);
+	  var params = querystring.parse(arg);
 
-    var sql_query = "SELECT distinct * from pet_infos_1000 where owner_name='"+d+"'";
+    var sql_query = "SELECT * from pet_infos_1000 where owner_name='"+d+"'";
     console.log(sql_query);
     // var sql_query = "SELECT distinct * from pet_infos_1000";
     pool.query(sql_query, (err, data) => {
