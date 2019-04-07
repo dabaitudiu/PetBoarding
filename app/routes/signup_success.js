@@ -16,20 +16,8 @@ const pool = new Pool({
   port: 5432,
 })
 
-var search_title = "Sign up Successfully";
-
-router.post('/', function(req, res, next) {
-    // Retrieve Information
-    //name,email,phone,password
-    var name = req.body.name;
-    var email = req.body.email;
-    var phone = req.body.phone;
-    var password = req.body.password;
-    
-    pool.query(sql_query, (err, data) => {
-		res.render('search', { title: search_title, data: data.rows, moment: moment, link:"http://www.google.com",hasInput:hasInput});
-    });
-    
+router.get('/', function(req, res, next) {
+    res.render('signup', { title: 'User Log-in' });
 });
 
 
