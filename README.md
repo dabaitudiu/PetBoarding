@@ -1,5 +1,7 @@
 # FindPetCaring
 
+### - created branch01 分支
+
 ### 页面说明：
 
 #### ./search：
@@ -8,6 +10,12 @@
 - post nothing： 返回前20条内容，提示至少要加1个constraint
 - post params: 返回sql查询的内容
 - 未完成： 前端；日期的比较；新schema的natural join，计算rating等
+
+#### ./signup, signup_success, login(施工中)：
+- 放在branch01分支了
+
+#### ./owenr_info：
+- owner详细界面
 
 #### ./appointment：
 - 预约界面
