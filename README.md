@@ -1,7 +1,17 @@
 # FindPetCaring
 
-1. ./search: 搜索页面 搜索前右侧随便显示，搜索后右侧显示结果 (可选项卡形式， 可table形式).
-2. ./appointment: 预约界面
+### 页面说明：
+
+#### ./search：
+搜索页面 搜索前右侧随便显示，搜索后右侧显示结果 (可选项卡形式， 可table形式). 
+- get('/'): 返回fixed内容 当前页面为FLAG的titles
+- post nothing： 返回前20条内容，提示至少要加1个constraint
+- post params: 返回sql查询的内容
+- 未完成： 前端；日期的比较；新schema的natural join，计算rating等
+
+#### ./appointment：
+- 预约界面
+- 未完成：前端；值传递；rating list显示
 
 ### 表说明：
 
