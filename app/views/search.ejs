@@ -121,7 +121,7 @@
                                                 <div class="col-md-3">
                                                         <div class="card card-blog">
                                                             <div class="card-image">
-                                                                 <img class="img img-raised" src="<%= data[i].owner_url%>" style="height: 200px;width: 300px;"> 
+                                                                 <img class="img img-raised" src="<%= data[i].owner_img_url%>" style="height: 200px;width: 300px;"> 
                                                                 <div class="ripple-cont"></div>
                                                             </div>
                                                             <div class="table">
@@ -135,10 +135,10 @@
                                                                     <p class="card-description"> <%= moment(data[i].date_start).format('MMM-DD-YYYY')%> - <%= moment(data[i].date_end).format('MMM-DD-YYYY')%></p>
                                                                     <p class="card-description"> Price: <%= data[i].price%> </p>
                                                                 </div>
-                                                                <form action="appointment" method="GET">
+                                                                <form action="owner_info" method="GET">
                                                                         <input type="hidden" name="name" value="<%= data[i].owner_name %>"/>
                                                                         <input type="hidden" name="link" value="<%= link %>"/>
-                                                                        <input type="submit" value="Contact Me"/>
+                                                                        <input type="submit" value="More Info"/>
                                                                 </form>
                                                             </div>
                                                         </div>
