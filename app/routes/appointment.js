@@ -20,13 +20,17 @@ var search_title = "预约分页";
 router.get('/', function(req, res, next) {
   var owner_id = url.parse(req.url,true).query.owner_id;
   var owner_name = url.parse(req.url,true).query.owner_name;
+  var owner_email = url.parse(req.url,true).query.owner_email;
+  var owner_phone = url.parse(req.url,true).query.owner_phone;
+
+  var mydata = [owner_id,owner_name,owner_email,owner_phone];
 
   // var owner_id = req.body.owner_id;
-  var sql_query = "select * from owner_personal_info";
+  var sql_query = "select * from owner_personal_info where owner_id='"+owner_id+"'";
 
   pool.query(sql_query, (err, data) => {
-    // console.log("result = " + JSON.stringify(data));
-		  res.render('appointment', { title: search_title, owner_id: owner_id,owner_name:owner_name});
+    console.log("result = " + JSON.stringify(data));
+		  res.render('appointment', { title: search_title, data:mydata});
     });
 });
 

@@ -51,7 +51,14 @@
 			</div>
 
 			<footer class="ace-card-footer">
-				<a class="btn btn-lg btn-block btn-thin btn-upper " href="#">Contact Me</a>
+                <form action="appointment" method="GET">
+                    <input type="hidden" name="owner_name" value="<%=data[0].owner_name%>">
+                    <input type="hidden" name="owner_id" value="<%=data[0].owner_id%>">
+                    <input type="hidden" name="owner_email" value="<%=data[0].owner_email%>">
+                    <input type="hidden" name="owner_phone" value="<%=data[0].owner_phone%>">
+                    <input class="btn btn-lg btn-block btn-thin btn-upper " type="submit" name="contact_button" value="CONTACT ME"/>
+                    <!-- <a class="btn btn-lg btn-block btn-thin btn-upper " href="#">Contact Me</a> -->
+                </form>
 			</footer>
 		</article><!-- #ace-card -->
 
