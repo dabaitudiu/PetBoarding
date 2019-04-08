@@ -22,7 +22,7 @@ function makeid(length) {
   return text;
 }
 
-console.log(makeid(10));
+// console.log(makeid(10));
 
 
 router.get('/', function(req, res, next) {

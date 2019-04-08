@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var moment = require('moment');
 
-const { Pool } = require('pg')
+var url = require("url");
+
+const { Pool } = require('pg');
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
@@ -13,8 +15,14 @@ const pool = new Pool({
 
 var search_title = "Pet Search Engine";
 
+var customer_id = "unknown";
+var customer_name = "unknown";
+
 router.get('/', function(req, res, next) {
-    res.render('search', { title: search_title, data:[] ,link:"http://www.google.com"});
+    customer_id = url.parse(req.url,true).query.customer_id;
+    customer_name = url.parse(req.url,true).query.customer_name;
+    // console.log(JSON.stringify(query_set));
+    res.render('search', { title: search_title, data:[], customer_name:customer_name, customer_id:customer_id});
 });
 
 router.post('/', function(req, res, next) {
@@ -22,6 +30,9 @@ router.post('/', function(req, res, next) {
     var years = req.body.years;
     var species = req.body.species;
     var house = req.body.house;
+    var customer_id = req.body.customer_id;
+
+    console.log("customer id is " + customer_id);
     
     var hasInput = 1;
 

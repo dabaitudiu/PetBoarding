@@ -6,7 +6,6 @@ var http = require('http');
 var url = require("url");
 var querystring = require("querystring");
 
-
 const { Pool } = require('pg')
 const pool = new Pool({
   user: 'postgres',
@@ -17,21 +16,18 @@ const pool = new Pool({
 })
 
 var search_title = "预约分页";
-var owner_name=''
 
 router.get('/', function(req, res, next) {
-    var name = req.owner_name;
-    var d = url.parse(req.url,true).query.name;
-    var arg = url.parse(req.url).query;
-	  var params = querystring.parse(arg);
+  var owner_id = url.parse(req.url,true).query.owner_id;
+  var owner_name = url.parse(req.url,true).query.owner_name;
 
-    var sql_query = "SELECT * from pet_infos_1000 where owner_name='"+d+"'";
-    console.log(sql_query);
-    // var sql_query = "SELECT distinct * from pet_infos_1000";
-    pool.query(sql_query, (err, data) => {
-		res.render('appointment', { title: search_title, data: data.rows, moment:moment });
+  // var owner_id = req.body.owner_id;
+  var sql_query = "select * from owner_personal_info";
+
+  pool.query(sql_query, (err, data) => {
+    // console.log("result = " + JSON.stringify(data));
+		  res.render('appointment', { title: search_title, owner_id: owner_id,owner_name:owner_name});
     });
 });
-
 
 module.exports = router;
