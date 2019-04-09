@@ -1,0 +1,55 @@
+create table groups (
+	group_name VARCHAR(12) primary key,
+	owner_states VARCHAR(14) not null,
+	foreign key (owner_states) references owner_info
+);
+insert into groups (group_name, owner_states) values ('Peters', 'Alabama');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Alaska');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Arizona');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'Arkansas');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'California');
+insert into groups (group_name, owner_states) values ('Peters', 'Colorado');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'Connecticut');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Delaware');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Florida');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Georgia');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Hawaii');
+insert into groups (group_name, owner_states) values ('Peters', 'Idaho');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Illinois');
+insert into groups (group_name, owner_states) values ('Peters', 'Indiana');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Iowa');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Kansas');
+insert into groups (group_name, owner_states) values ('Peters', 'Kentucky');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Louisiana');
+insert into groups (group_name, owner_states) values ('Peters', 'Maine');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Maryland');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'Massachusetts');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Michigan');
+insert into groups (group_name, owner_states) values ('Peters', 'Minnesota');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Mississippi');
+insert into groups (group_name, owner_states) values ('Peters', 'Missouri');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Montana');
+insert into groups (group_name, owner_states) values ('Peters', 'Nebraska');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Nevada');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'New Hampshire');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'New Jersey');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'New Mexico');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'New York');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'North Carolina');
+insert into groups (group_name, owner_states) values ('Peters', 'North Dakota');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Ohio');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'Oklahoma');
+insert into groups (group_name, owner_states) values ('Peters', 'Oregon');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'Pennsylvania');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Rhode Island');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'South Carolina');
+insert into groups (group_name, owner_states) values ('Peters', 'South Dakota');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Tennessee');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'Texas');
+insert into groups (group_name, owner_states) values ('Cozy Pub', 'Utah');
+insert into groups (group_name, owner_states) values ('The Simpsons', 'Vermont');
+insert into groups (group_name, owner_states) values ('Peters', 'Virginia');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'Washington');
+insert into groups (group_name, owner_states) values ('Peters', 'West Virginia');
+insert into groups (group_name, owner_states) values ('Pet Carer', 'Wisconsin');
+insert into groups (group_name, owner_states) values ('Peters', 'Wyoming');

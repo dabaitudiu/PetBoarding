@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Appointment Check
+        </title>
+    </head>
+    <body>
+        <h1>Appointment Checker</h1>
+        <% if (data.length === 0) {%>
+            <h2>下面这仨设计成只能选一个：</h2>
+            <form action="inquiry" method="POST">
+                If you are a customer:
+                <div>
+                    <label for="customer_id">your customer_id:</label>
+                    <input type="text" name="customer_id"/>
+                </div>
+                If you are a service provider:
+                <div>
+                    <label for="customer_id">your customer_id:</label>
+                    <input type="text" name="customer_id"/>
+                </div>
+                If you just want to inquire a certain appointment:
+                <div>
+                    <label for="app_id">your appointment_id:</label>
+                    <input type="text" name="appointment_id"/>
+                </div>
+                <button type="submit">Inquire!</button>
+            </form>
+        <% } else { %>
+
+                <table>
+                    <tr>
+                        <th>Appointment ID</th>
+                        <!-- <th>Owner Name</th> 
+                        <th>Owner Email</th>
+                        <th>Owner Phone</th> -->
+                        <th>Status</th>
+                    </tr>
+                    <% for (var i = 0; i < data.length; i++) {%>
+                    <tr>
+                        <th><%=data[i].appointment_id%></th>
+                        <!-- <th><%=data[i].owner_name%></th>
+                        <th><%=data[i].owner_email%></th>
+                        <th><%=data[i].owner_phone%></th> -->
+                        <th><%=data[i].status%></th>
+                    </tr>
+                    <% } %>
+                </table>
+                If finished:
+                <form action="update" method="POST">
+                    <div>
+                        <label for="app_id">Your appointment_id:</label>
+                        <input type="text" name="appointment_id"/>
+                        <label for="rating">Rating</label>
+                        <select class="form-control" name="rating">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button type="submit">Update Status</button>
+                </form>
+        <% } %>
+
+    </body>
+</html>

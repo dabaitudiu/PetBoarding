@@ -36,6 +36,13 @@ var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var user_accRouter = require('./routes/user_acc');
 var appointRouter = require('./routes/appointment');
+var ownerinfoRouter = require('./routes/owner_info');
+var signupSucessRouter = require('./routes/signup_success');
+var postLoginRouter = require('./routes/post_login');
+var appSuccessRouter = require('./routes/app_success');
+// var customerRouter = require('./routes/customer');
+var inquiryRouter = require('./routes/inquiry');
+var updateStatusRouter = require('./routes/update');
 
 var app = express();
 
@@ -82,6 +89,14 @@ app.use('/signup', signupRouter);
 app.use('/user_acc', user_accRouter);
 app.use('/search', searchRouter);
 app.use('/appointment', appointRouter);
+app.use('/owner_info',ownerinfoRouter);
+app.use('/signup_success',signupSucessRouter);
+app.use('/post_login', postLoginRouter);
+app.use('/app_success',appSuccessRouter);
+// app.use('/customer',customerRouter);
+app.use('/inquiry',inquiryRouter);
+app.use('/update',updateStatusRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

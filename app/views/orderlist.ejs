@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <title>Database</title>
+            <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+            <link href="/css/style.css" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
+            <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+            <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="/css/cards-style.css" type="text/css" /> </head>
+        </head>
+    <body>
+        <h1 style="text-align:center;">Appointment List - Admin Version</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">appointment_id</th>
+                        <th scope="col">customer_id</th>
+                        <th scope="col">customer_name</th>
+                        <th scope="col">owner_id</th>
+                        <th scope="col">owner_name</th>
+                        <th scope="col">date</th>
+                        <th scope="col">time</th>
+                        <th scope="col">status</th>
+                    </tr>
+                </thead>
+                <% for (var i = 0; i < data.length; i++) {%>
+                    <tr>
+                        <th scope="row"><%=i+1%></th>
+                            <td><%=data[i].appointment_id%></td>
+                            <td><%=data[i].customer_id%></td>
+                            <td><%=data[i].c_name%></td>
+                            <td><%=data[i].owner_id%></td>
+                            <td><%=data[i].o_name%></td>
+                            <td><%=moment(data[i].app_date).format('MMM-DD-YYYY')%></td>
+                            <td><%=data[i].app_time%></td>
+                            <td><%=data[i].status%></td>
+                    </tr>
+        <% } %>
+    </table>
+    </body>
+</html>
