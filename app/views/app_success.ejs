@@ -2,10 +2,16 @@
 <html>
     <head>
         <title>
-            预约成功！
+            预约状态
         </title>
     </head>
     <body>
+        <% if (typeof error != 'undefined') {%>
+            You violated the constraints of the table.
+            <div>
+                Error is <%=error.constraints%>|ssss|<%=c%>
+            </div>
+        <% } %>
         <div>
             <h1>Appointment successfully made!</h1>
             <h2>Your appointment details is as follows:</h2>

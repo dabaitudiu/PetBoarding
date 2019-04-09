@@ -29,6 +29,9 @@ router.get('/', function(req, res, next) {
   var sql_query = "select * from owner_personal_info where owner_id='"+owner_id+"'";
 
   pool.query(sql_query, (err, data) => {
+    if (err) {
+      return console.error('Error executing query', err.stack);
+    }
     console.log("result = " + JSON.stringify(data));
 		  res.render('appointment', { title: search_title, data:mydata});
     });

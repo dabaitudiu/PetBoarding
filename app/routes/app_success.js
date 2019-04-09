@@ -58,7 +58,13 @@ router.post('/', function(req, res, next) {
     console.log(insert_query);
 
     pool.query(insert_query, (err, data) => {
-        res.render('app_success',{data:mydata});
+        if (err) {
+            // console.log("errors:" + JSON.stringify(err));
+            console.log("Error. Violating " + err.constraint);
+            // console.error('APP_SUCCESS:Error executing query', err.stack);
+            var error = err.stack;
+        }
+        res.render('app_success',{data:mydata,error:err,c:err.constraint});
     });
   
   });
