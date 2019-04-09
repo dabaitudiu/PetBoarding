@@ -61,11 +61,11 @@
                             <div class="form-row" style="padding-top:10px; text-align:center">
                                     <div class="form-group col-md-6">
                                       <label for="From">From</label>
-                                      <input class="form-control" type="date" name="start_date" value="2018-08-19">
+                                      <input class="form-control" type="date" name="start_date">
                                     </div>
                                     <div class="form-group col-md-6">
                                       <label for="inputState">To</label>
-                                      <input class="form-control" type="date" name="end_date" value="2018-08-19">
+                                      <input class="form-control" type="date" name="end_date">
                                     </div>
                             </div>
 
@@ -76,8 +76,8 @@
                                     <input type="text" placeholder="Min" name="price_min">
                                 </div>         
                                 <div class="form-group col-md-6">
-                                    <label for="From">Min Price</label>
-                                    <input type="text" placeholder="Min" name="price_min">
+                                    <label for="From">Max Price</label>
+                                    <input type="text" placeholder="Max" name="price_max">
                                 </div>
                             </div>
 
@@ -103,7 +103,7 @@
                 <!-- Right Result Area -->
                 <div class="col-md-9" style="height: 100%; padding-right: 5px; padding-left:5px;" >
                     <div style="padding-left: 5px; background-color:white;height: 100%;">
-                            <% if (data.length === 0) {%>
+                            <% if (data.length === 1 && data[0] === "RESERVED") {%>
                                 <% if (typeof customer_name != 'undefined') {%>
                                     <% console.log(customer_name)%>
                                     <h1 style="background-color:bisque; text-align:center;font-size:600%">Welcome! <%= customer_name%></h1>
@@ -114,7 +114,7 @@
                                         <a href="signup"style="font-size:500%; background-color:orange;">signup</a>
                                     </div>
                                 <% } %>
-                                <div style="font-size:300%;">You can have a look of our collabrators before you decide:</div>
+                                <div style="font-size:300%;">Currently no results shown. You can have a look of our collabrators before you decide:</div>
                                 <div style="font-size: 500%;text-align: center; color:purple;">
                                     Google
                                 </div>
@@ -129,9 +129,17 @@
                                 </div>
                             <% } else {%>
                                 <% if (hasInput === 0) { %>
-                                    <div style="font-size:50px; padding:20px;">You must specify at least one constraint. No matter, have a look at our recommendations!</div>
+                                    <div style="font-size:50px; padding:20px;">You must specify at least one constraint(pet_type). No matter, have a look at our recommendations!</div>
                                 <% } else {%>
-                                    <div style="font-size:50px; padding:20px;">Here are what we found for you!</div>
+                                    <div style="font-size: 30px;background-color:floralwhite">
+                                        Your constraints:
+                                        <div>Pet Type: <%=constraints[0]%></div>
+                                        <div>Pet Age: <%=constraints[1]%></div>
+                                        <div>House Type: <%=constraints[2]%></div>
+                                        <div>Date: <%=constraints[3]%> to <%=constraints[4]%></div>
+                                        <div>Price: <%=constraints[5]%> to <%=constraints[6]%></div>
+                                    </div>
+                                    <div style="font-size:50px; padding:20px;"><%=data.length %> results found.</div>
                                 <% } %>
                                 <div class="cards-2 section-gray">
                                         <div class="container">
@@ -149,7 +157,7 @@
                                                                 </h4>
                                                                 <div style="font-size:100%">
                                                                     <p class="card-description"> Ratings: <%= data[i].ratings%> </p>
-                                                                    <p class="card-description"> Pet Type(s): <%= data[i].species%> </p>
+                                                                    <p class="card-description"> Pet Type(s): <%= data[i].pet_type%> </p>
                                                                     <p class="card-description"> House Type: <%= data[i].house_type%> </p>
                                                                     <p class="card-description"> <%= moment(data[i].date_start).format('MMM-DD-YYYY')%> - <%= moment(data[i].date_end).format('MMM-DD-YYYY')%></p>
                                                                     <p class="card-description"> Price: <%= data[i].price%> </p>
