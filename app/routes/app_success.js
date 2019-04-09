@@ -53,18 +53,24 @@ router.post('/', function(req, res, next) {
     var mydata = [appointment_id,date,time,owner_name,owner_email,owner_phone];
 
     var sql_query = "insert into appointments values";
-    var insert_query = sql_query + "('" + appointment_id + "','" + owner_id + "','" + customer_id + "','" + date + "','" + time + "','" + status + "')";
+    var insert_query = sql_query + "('" + appointment_id + "','" + date + "','" + time + "','" + status + "');";
 
-    console.log(insert_query);
+    insert_query += "insert into customer_appointments values";
+    insert_query += "('" + customer_id + "','" + appointment_id + "');";
+
+    insert_query += "insert into owner_appointments values";
+    insert_query += "('" + owner_id + "','" + appointment_id + "')";
+
+    console.log("CHECK 2019" + insert_query);
 
     pool.query(insert_query, (err, data) => {
         if (err) {
             // console.log("errors:" + JSON.stringify(err));
-            console.log("Error. Violating " + err.constraint);
-            // console.error('APP_SUCCESS:Error executing query', err.stack);
-            var error = err.stack;
+            // console.log("Error. Violating " + err.stack);
+            // console.error('APP_SUCCESS:Error executing query', err.message);
+          return res.render('app_success',{data:mydata,error:err.message});
         }
-        res.render('app_success',{data:mydata,error:err,c:err.constraint});
+        res.render('app_success',{data:mydata});
     });
   
   });

@@ -10,7 +10,7 @@ const pool = new Pool({
   port: 5432,
 })
 
-var sql_query = 'INSERT INTO customer_info VALUES';
+
 
 function makeid(length) {
   var text = "";
@@ -21,9 +21,6 @@ function makeid(length) {
 
   return text;
 }
-
-// console.log(makeid(10));
-
 
 router.get('/', function(req, res, next) {
     res.render('signup', { title: 'User Sign up' });
@@ -36,12 +33,18 @@ router.post('/', function(req, res, next) {
     var email = req.body.email;
     var phone = req.body.phone;
     var password = req.body.password;
+    var sql_query = "INSERT INTO user_info VALUES";
 
-    var insert_query = sql_query + "('" + customer_id + "','" + name + "','" + email + "','" + phone + "','" + password  + "')";
-    
+    var insert_query = sql_query + "('" + customer_id + "','" + name + "','" + email + "','" + phone + "','" + password  + "');";
+    insert_query += "INSERT INTO customer_info VALUES";
+    insert_query += "('" + customer_id + "','" + '0' +"')";
+
     console.log(insert_query);
 
     pool.query(insert_query, (err, data) => {
+      if (err) {
+        return res.render('signup_success', {name:name, error:err.message});
+      }
 		  res.render('signup_success', {name:name});
     });
     

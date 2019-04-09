@@ -43,7 +43,7 @@ router.post('/', function(req, res, next) {
     var hasInput = 1;
 
     // Construct Specific SQL Query
-    var sql_query = "select * from service natural join owner_service natural join owner_info";
+    var sql_query = "select * from service natural join owner_service natural join owner_info  join user_info on user_info.user_id = owner_info.owner_id";
     if (species != '') {
         sql_query += " WHERE pet_type='"+species+"'";
         console.log("species is not null! It's " + species);
@@ -69,9 +69,9 @@ router.post('/', function(req, res, next) {
     }
 
 
-    if (sql_query === "select * from service natural join owner_service natural join owner_info") {
+    if (sql_query === "select * from service natural join owner_service natural join owner_info  join user_info on user_info.user_id = owner_info.owner_id") {
         console.log("OMG sql_query is EMPTY!!");
-        sql_query = "select * from service natural join owner_service natural join owner_info limit 20";
+        sql_query = "select * from service natural join owner_service natural join owner_info  join user_info on user_info.user_id = owner_info.owner_id limit 20";
         hasInput = 0;
     } else {
         console.log("sql_query is " + sql_query);

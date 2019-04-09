@@ -16,15 +16,18 @@ const pool = new Pool({
   port: 5432,
 })
 
-var search_title = "预约分页";
+var search_title = "Owner_info";
 var owner_name=''
 
 router.get('/', function(req, res, next) {
     var d = url.parse(req.url,true).query.name;
-    var sql_query = "SELECT * from owner_personal_info where owner_name='"+d+"'";
-    // var sql_query = "SELECT distinct * from pet_infos_1000";
+    var sql_query = " select * from owner_info O join user_info U on (O.owner_id = U.user_id) where user_name='"+d+"'";
+    // console.log("test " + sql_query);
     pool.query(sql_query, (err, data) => {
-		res.render('owner_info', { title: search_title, data: data.rows, moment:moment });
+      if (typeof d === 'undefined') {
+		    return res.render('owner_info', { title: search_title, data: ["RESERVED"], moment:moment });
+      }
+		  res.render('owner_info', { title: search_title, data: data.rows, moment:moment });
     });
 });
 
