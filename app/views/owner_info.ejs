@@ -26,106 +26,103 @@
     <script type="text/javascript" src="js/vendor/modernizr-3.3.1.min.js"></script>
   
 </head>
-  <body>
-     <div class="ace-wrapper">
-         <header id="ace-header" class="ace-container-shift ace-logo-in ace-head-boxed ace-nav-right">
-             <div class="ace-head-inner">
-                 <div class="ace-head-container ace-container">
-                     <div class="ace-head-row">
-                         <div id="ace-head-col1" class="ace-head-col text-left">
-                             <a id="ace-logo" class="ace-logo" href="index.html">
-                                <span>Pet Owner Infos</span>
-                             </a>
-                         </div>
-                         
-                    
-                     </div>
-                 </div><!-- .ace-container -->
-             </div><!-- .ace-head-inner -->
-        </header><!-- #ace-header -->
-        <article id="ace-card" class="ace-card bg-primary" style="margin-left:80px;">
-			<div class="ace-card-inner text-center">
-				<img class="avatar avatar-195" src="<%= data[0].owner_img_url %>" width="195" height="195" alt="">
-				<h1><%= data[0].owner_name %></h1>
-                <p class="text-muted"><%= data[0].owner_phone %></p>           
-			</div>
-
-			<footer class="ace-card-footer">
-                <form action="appointment" method="GET">
-                    <input type="hidden" name="owner_name" value="<%=data[0].owner_name%>">
-                    <input type="hidden" name="owner_id" value="<%=data[0].owner_id%>">
-                    <input type="hidden" name="owner_email" value="<%=data[0].owner_email%>">
-                    <input type="hidden" name="owner_phone" value="<%=data[0].owner_phone%>">
-                    <input class="btn btn-lg btn-block btn-thin btn-upper " type="submit" name="contact_button" value="CONTACT ME"/>
-                    <!-- <a class="btn btn-lg btn-block btn-thin btn-upper " href="#">Contact Me</a> -->
-                </form>
-			</footer>
-		</article><!-- #ace-card -->
-
-        <div id="ace-content" class="ace-container-shift">
-            <div class="ace-container">
-
-                
-                    <div id="ace-nav-wrap" class="hidden-sm hidden-xs">
-                        <div class="ace-nav-cont">
-                            <div id="ace-nav-tools" class="hidden">
-                                <span class="ace-icon ace-icon-dots-three-horizontal"></span>
-
-                                <button id="ace-nav-arrow" class="clear-btn">
-                                    <span class="ace-icon ace-icon-chevron-thin-down"></span>
-                                </button>
+<body>
+    <% if (data.length === 1 && data[0] === 'RESERVED') { %>
+        <h1>Please specify a service provider through the search page.</h1>
+    <% } else {%>
+        <div class="ace-wrapper">
+                <header id="ace-header" class="ace-container-shift ace-logo-in ace-head-boxed ace-nav-right">
+                    <div class="ace-head-inner">
+                        <div class="ace-head-container ace-container">
+                            <div class="ace-head-row">
+                                <div id="ace-head-col1" class="ace-head-col text-left">
+                                    <a id="ace-logo" class="ace-logo" href="index.html">
+                                       <span>Pet Owner Infos</span>
+                                    </a>
+                                </div>
+                                
+                           
                             </div>
-                        </div>
-                        <div class="ace-nav-btm"></div>
-                    </div><!-- .ace-nav-wrap -->
-
-                <div class="ace-paper-stock">
-                    <main class="ace-paper clearfix">
-                        <div class="ace-paper-cont clear-mrg">
-						
-						<!-- START: PAGE CONTENT -->
-    <div class="padd-box clear-mrg">
-        <section class="section brd-btm">
-            <div class="row">
-                <div class="col-sm-12 clear-mrg text-box">
-                    <h2 class="title-lg text-upper">About Me</h2>
-
-                    <p><b>Helo, I’m <%=data[0].owner_name%>!</b><br>
-                        <%=data[0].owner_intro  %>
-                    </p>
-                </div>
-            </div>
-        </section><!-- .section -->
-
-        <section class="section brd-btm">
-            <div class="row">
-                <div class="col-sm-6 clear-mrg">
-                    <h4 class="title text-upper">Personal Info</h4>
-
-                    <dl class="dl-horizontal clear-mrg">
-                        <dt class="text-upper">Full Name</dt>
-                        <dd><%=data[0].owner_name %></dd>
-
-                        <dt class="text-upper">Gender</dt>
-                        <dd><%=data[0].owner_gender %></dd>
-
-                        <dt class="text-upper">Address</dt>
-                        <dd><%=data[0].owner_address %></dd>
-
-                        <dt class="text-upper">e-mail</dt>
-                        <dd><a href="<%=data[0].owner_email %>"><%=data[0].owner_email %></a></dd>
-
-                        <dt class="text-upper">phone</dt>
-                        <dd><%=data[0].owner_phone %></dd>
-
-                        <dt class="text-upper">Date Joined</dt>
-                        <dd><%=moment(data[0].date_entered).format('MMM-DD-YYYY') %></dd>
-                    </dl>
-                </div><!-- .col-sm-6 -->
-            </div>
-        </section><!-- .section -->
-                
-</div>
-
+                        </div><!-- .ace-container -->
+                    </div><!-- .ace-head-inner -->
+               </header><!-- #ace-header -->
+               <article id="ace-card" class="ace-card bg-primary" style="margin-left:80px;">
+                   <div class="ace-card-inner text-center">
+                       <img class="avatar avatar-195" src="<%= data[0].owner_img_url %>" width="195" height="195" alt="">
+                       <h1><%= data[0].user_name %></h1>
+                       <p class="text-muted"><%= data[0].user_phone %></p>           
+                   </div>
+       
+                   <footer class="ace-card-footer">
+                       <form action="appointment" method="GET">
+                           <input type="hidden" name="owner_id" value="<%=data[0].user_id%>">
+                           <input class="btn btn-lg btn-block btn-thin btn-upper " type="submit" name="contact_button" value="CONTACT ME"/>
+                           <!-- <a class="btn btn-lg btn-block btn-thin btn-upper " href="#">Contact Me</a> -->
+                       </form>
+                   </footer>
+               </article><!-- #ace-card -->
+       
+               <div id="ace-content" class="ace-container-shift">
+                   <div class="ace-container">
+       
+                       
+                           <div id="ace-nav-wrap" class="hidden-sm hidden-xs">
+                               <div class="ace-nav-cont">
+                                   <div id="ace-nav-tools" class="hidden">
+                                       <span class="ace-icon ace-icon-dots-three-horizontal"></span>
+       
+                                       <button id="ace-nav-arrow" class="clear-btn">
+                                           <span class="ace-icon ace-icon-chevron-thin-down"></span>
+                                       </button>
+                                   </div>
+                               </div>
+                               <div class="ace-nav-btm"></div>
+                           </div><!-- .ace-nav-wrap -->
+       
+                       <div class="ace-paper-stock">
+                           <main class="ace-paper clearfix">
+                               <div class="ace-paper-cont clear-mrg">
+                               
+                               <!-- START: PAGE CONTENT -->
+           <div class="padd-box clear-mrg">
+               <section class="section brd-btm">
+                   <div class="row">
+                       <div class="col-sm-12 clear-mrg text-box">
+                           <h2 class="title-lg text-upper">About Me</h2>
+       
+                           <p><b>Helo, I’m <%=data[0].user_name%>!</b><br>
+                               <%=data[0].owner_intro  %>
+                           </p>
+                       </div>
+                   </div>
+               </section><!-- .section -->
+       
+               <section class="section brd-btm">
+                   <div class="row">
+                       <div class="col-sm-6 clear-mrg">
+                           <h4 class="title text-upper">Personal Info</h4>
+       
+                           <dl class="dl-horizontal clear-mrg">
+                               <dt class="text-upper">Full Name</dt>
+                               <dd><%=data[0].user_name %></dd>
+       
+                               <dt class="text-upper">Address</dt>
+                               <dd><%=data[0].owner_address %></dd>
+       
+                               <dt class="text-upper">e-mail</dt>
+                               <dd><a href="<%=data[0].user_email %>"><%=data[0].user_email %></a></dd>
+       
+                               <dt class="text-upper">phone</dt>
+                               <dd><%=data[0].user_phone %></dd>
+       
+                               <dt class="text-upper">Date Joined</dt>
+                               <dd><%=moment(data[0].date_entered).format('MMM-DD-YYYY') %></dd>
+                           </dl>
+                       </div><!-- .col-sm-6 -->
+                   </div>
+               </section><!-- .section -->
+                       
+       </div>
+       <% } %>
 </body>
 </html>

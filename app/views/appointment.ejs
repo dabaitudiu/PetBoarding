@@ -5,29 +5,33 @@
     </head>
     <body>
         <h1>Appointment Page</h1>
-        <form action="app_success" method="POST">
-            <input type="hidden" name="owner_id" value="<%=data[0]%>"/>
-            <input type="hidden" name="owner_name" value="<%=data[1]%>"/>
-            <input type="hidden" name="owner_email" value="<%=data[2]%>"/>
-            <input type="hidden" name="owner_phone" value="<%=data[3]%>"/>
-            <div>
-                <label for="owner_name">Service Provider: <%=data[1]%></label>
-            </div>
-            <div>
-                <label for="customer_id">Customer ID:</label>
-                <input type="text" name="customer_id"/>
-            </div>
-            <div>
-                <label for="date">Date:</label>
-                <input type="date" name="date"/>
-            </div>
-            <div>
-                <label for="time">Time:</label>
-                <input type="time" name="time"/>
-            </div>
-            <div>
-                <button type="submit">Make Appointment!</button>
-            </div>
-        </form>
+        <% if (data[0] != 'RESERVED') {%>
+            <form action="app_success" method="POST">
+                    <input type="hidden" name="owner_id" value="<%=data[0].user_id%>"/>
+                    <input type="hidden" name="owner_name" value="<%=data[0].user_name%>"/>
+                    <input type="hidden" name="owner_email" value="<%=data[0].user_email%>"/>
+                    <input type="hidden" name="owner_phone" value="<%=data[0].user_phone%>"/>
+                    <div>
+                        <label for="owner_name">Service Provider: <%=data[0].user_name%></label>
+                    </div>
+                    <div>
+                        <label for="customer_id">Customer ID:</label>
+                        <input type="text" name="customer_id"/>
+                    </div>
+                    <div>
+                        <label for="date">Date:</label>
+                        <input type="date" name="date"/>
+                    </div>
+                    <div>
+                        <label for="time">Time:</label>
+                        <input type="time" name="time"/>
+                    </div>
+                    <div>
+                        <button type="submit">Make Appointment!</button>
+                    </div>
+                </form>
+            <% } else { %>
+                <h1>Please make appointments via owners page.</h1>
+            <% } %>
     </body>
 </html>
