@@ -45,8 +45,17 @@
                                 </select>
                             </div>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                            <!-- Pet Age -->
+                            <div id="pet_age" style="padding-top:10px; text-align:center">
+                                <label for="pet_age_select">Pet's Age</label>
+                                <select class="form-control" name="years" style="width:50%; position: relative;left: 25%">
+                                    <option value=""></option>
+                                    <option value="0-3">0-3</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="6-10">6-10</option>
+                                    <option value="10+">10+</option>
+                                </select>
+                            </div>
 
                             <!-- Date -->
                             <div class="form-row" style="padding-top:10px; text-align:center">
@@ -72,184 +81,27 @@
                                 </div>
                             </div>
 
-        .feather {
-        width: 16px;
-        height: 16px;
-        vertical-align: text-bottom;
-        }
-
-        /*
-        * Sidebar
-        */
-
-        .sidebar {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 100; /* Behind the navbar */
-        padding: 0;
-        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-        }
-
-        .sidebar-sticky {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 48px; /* Height of navbar */
-        height: calc(100vh - 48px);
-        padding-top: .5rem;
-        overflow-x: hidden;
-        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        }
-
-        .sidebar .nav-link {
-        font-weight: 500;
-        color: #333;
-        }
-
-        .sidebar .nav-link .feather {
-        margin-right: 4px;
-        color: #999;
-        }
-
-        .sidebar .nav-link.active {
-        color: #007bff;
-        }
-
-        .sidebar .nav-link:hover .feather,
-        .sidebar .nav-link.active .feather {
-        color: inherit;
-        }
-
-        .sidebar-heading {
-        font-size: .75rem;
-        text-transform: uppercase;
-        }
-
-        /*
-        * Navbar
-        */
-        
-        .navbar .form-control {
-        padding: .75rem 1rem;
-        border-width: 0;
-        border-radius: 0;
-        }
-
-        .form-control-dark {
-        color: #fff;
-        background-color: rgba(255, 255, 255, .1);
-        border-color: rgba(255, 255, 255, .1);
-        }
-
-        .form-control-dark:focus {
-        border-color: transparent;
-        box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-        }
-
-        /*
-        * Utilities
-        */
-
-        .border-top { border-top: 1px solid #e5e5e5; }
-        .border-bottom { border-bottom: 1px solid #e5e5e5; }
-    </style>
-
-    <!-- Custom styles for this template -->
-
-    </head>
-    
-<body>
-     
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">PetCare</a>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-        <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="/pet">Sign out</a>
-        </li>
-        </ul>
-    </nav>
-
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                         
-                    <form id="html_form" class="navbar-form navbar-left" action="search" role="form" method="post">
-                        <!-- Pet Types -->
-                        <div id="pet_type" class="form-group align-items-left" >
-                            <label for="pet_type_select">Pet Species:</label>
-                            <select class="form-control" name="species" style="width:70%;">
-                                <option value=""></option>
-                                <option value="dog">dog</option>
-                                <option value="cat">cat</option>
-                                <option value="parrot">parrot</option>
-                                <option value="fish">fish</option>
-                                <option value="hawk">hawk</option>
-                                <option value="horse">horse</option>
-                                <option value="duck">duck</option>
-                                <option value="other">others</option>
-                            </select>
-                        </div>
-        
-                        <!-- Pet Age -->
-                        <div id="pet_age" class="form-group">
-                            <label for="pet_age_select">Pet's Age</label>
-                            <select class="form-control" name="years" style="width:70%;">
-                                <option value=""></option>
-                                <option value="0-3">0-3</option>
-                                <option value="3-5">3-5</option>
-                                <option value="6-10">6-10</option>
-                                <option value="10+">10+</option>
-                            </select>
-                        </div>
-        
-                        <!-- Date -->
-                        <div class="form-group">
-                                <div class="form-group">
-                                    <label for="From">From</label>
-                                    <input class="form-control" type="date" name="start_date" value="2018-08-19" style="width:70%;">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputState">To</label>
-                                    <input class="form-control" type="date" name="end_date" value="2018-08-19" style="width:70%;">
-                                </div>
-                        </div>
-        
-                        <!-- Price -->
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="From">Min Price</label>
-                                <input type="text" placeholder="Min" name="price_min">
-                            </div>         
-                            <div class="form-group">
-                                <label for="From">Min Price</label>
-                                <input type="text" placeholder="Min" name="price_min">
+                            <!-- House Type -->
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                                <label for="exampleFormControlSelect1">House Type</label>
+                                <select class="form-control" name="house" style="width:70%; position: relative;left: 15%">
+                                    <option value="" selected="selected"></option>
+                                    <option value="house with swimming pool">house with swimming pool</option>
+                                    <option value="house with yard">house with yard</option>
+                                    <option value="big house">big house</option>
+                                    <option value="middle house">middle house</option>
+                                    <option value="small house">small house</option>
+                                </select>
                             </div>
-                        </div>
-        
-                        <!-- House Type -->
-                        <div class="form-group" >
-                            <label for="exampleFormControlSelect1" >House Type</label>
-                            <select class="form-control" name="house" style="width:70%;">
-                                <option value="" selected="selected"></option>
-                                <option value="house with swimming pool">house with swimming pool</option>
-                                <option value="house with yard">house with yard</option>
-                                <option value="big house">big house</option>
-                                <option value="middle house">middle house</option>
-                                <option value="small house">small house</option>
-                            </select>
-                        </div>
-                        <div class="form-row" style="padding-top:10px; text-align:center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+                            <div class="form-row" style="padding-top:10px; text-align:center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </nav>
-        
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+
+                <!-- Right Result Area -->
+                <div class="col-md-9" style="height: 100%; padding-right: 5px; padding-left:5px;" >
                     <div style="padding-left: 5px; background-color:white;height: 100%;">
                             <% if (data.length === 1 && data[0] === "RESERVED") {%>
                                 <% if (typeof customer_name != 'undefined') {%>
@@ -315,32 +167,19 @@
                                                                         <input type="submit" value="Contact Me"/>
                                                                 </form>
                                                             </div>
-                                                            <form action="owner_info" method="GET">
-                                                                    <input type="hidden" name="name" value="<%= data[i].owner_name %>"/>
-                                                                    <input type="hidden" name="link" value="<%= link %>"/>
-                                                                    <input type="submit" value="More Info"/>
-                                                            </form>
                                                         </div>
                                                     </div>
-                                                </div>
-                                        <% } %>
+                                            <% } %>
+                                        </div>
                                     </div>
-                                </div>
                             <% } %>
-                    </div>   
-        
+
+                            
+
+                    </div>                    
                 </div>
-        
-            </main>
         </div>
     </div>
 
-<!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
 </body>
 </html>
