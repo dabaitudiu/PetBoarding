@@ -25,11 +25,11 @@ Run in the following sequence:
 You can make a search here. Afterwards, it will post the info to /search page.
 
 #### 2. /search: Main Search page
-(1). If you do not specify any constraints, recommended 20 results will be shown.
-(2). You must specify a kind of pet. Other constraints include: house_type, pet_age, date, ratings, etc.
-(3). (Not finished) You can rank the results according to the choice you made in search constraints.
-(4). After a search, results will be shown on the right side. The number of results will be shown. 
-(5). In the right result cards, you can pick one and find the owner's detail information
+- If you do not specify any constraints, recommended 20 results will be shown.
+- You must specify a kind of pet. Other constraints include: house_type, pet_age, date, ratings, etc.
+- (Not finished) You can rank the results according to the choice you made in search constraints.
+- After a search, results will be shown on the right side. The number of results will be shown. 
+- In the right result cards, you can pick one and find the owner's detail information
 
 #### 3. /owner_info: Detail information of the service providers.
 - On the left side, there is a "CONTACT ME". If you have made your choice, click it and it will direct you to the appointment page.
