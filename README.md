@@ -1,99 +1,63 @@
 # FindPetCaring
 
-### 准备面试 18:00 前暂时AFK.
-### - created branch01 分支
+## Usage
 
-### 页面说明：
-
-#### ./search：
-搜索页面 搜索前右侧随便显示，搜索后右侧显示结果 (可选项卡形式， 可table形式). 
-- get('/'): 返回fixed内容 当前页面为FLAG的titles
-- post nothing： 返回前20条内容，提示至少要加1个constraint
-- post params: 返回sql查询的内容
-- 未完成： 前端；日期的比较；新schema的natural join，计算rating等
-
-#### ./signup, signup_success, login(施工中)：
-- 放在branch01分支了
-
-#### ./owenr_info：
-- owner详细界面
-
-#### ./appointment：
-- 预约界面
-- 未完成：前端；值传递；rating list显示
-
-### 表说明：
-
-**pet_infos_1000 等文件已经弃用！**
-
-#### Owner Service：
-```sql
-create table owner_service (
-	owner_id VARCHAR(9),
-	species VARCHAR(6),
-	years VARCHAR(4),
-	house_type VARCHAR(24),
-	price INT,
-	date_start DATE,
-	date_end DATE
-);
+### Database Generation
 ```
-- Initialize at **owner_service.sql**
-- 映射关系之后要再好好改一下。。
-
-#### Owner Info：
-```sql
-create table Owner_Personal_Info (
-	owner_id VARCHAR(9),
-	owner_name VARCHAR(50),
-	owner_email VARCHAR(50),
-	owner_gender VARCHAR(50),
-	owner_intro TEXT,
-	date_entered DATE,
-	owner_phone VARCHAR(50),
-	owner_img_url VARCHAR(50),
-	owner_address VARCHAR(50),
-	owner_states VARCHAR(50)
-);
+Run in the following sequence:
+1. user_info
+2. owner_info
+3. customer_info
+4. customer_pet_info
+5. appointments
+6. owner_appointments
+7. customer_appointments
+8. reviews
+9. service
+10. owner_service
+11. factions
 ```
-- Initialize at **Owner_Personal_Info.sql**
-- 这里owner_id应该是primary key了吧 不过owner_info和owner_service谁foreign谁要考虑一下
+
+### Page Clarification
+**to view all functions without front-end, approach to branch01**
+
+#### 1. /index: Index Page
+You can make a search here. Afterwards, it will post the info to /search page.
+
+#### 2. /search: Main Search page
+(1). If you do not specify any constraints, recommended 20 results will be shown.
+(2). You must specify a kind of pet. Other constraints include: house_type, pet_age, date, ratings, etc.
+(3). (Not finished) You can rank the results according to the choice you made in search constraints.
+(4). After a search, results will be shown on the right side. The number of results will be shown. 
+(5). In the right result cards, you can pick one and find the owner's detail information
+
+#### 3. /owner_info: Detail information of the service providers.
+- On the left side, there is a "CONTACT ME". If you have made your choice, click it and it will direct you to the appointment page.
+- (Forget to add) A return to search/index page button.
+
+#### 4. /appointment: Appointment page.
+- Page where you can make appointment with the service provider you chose. You need to enter your customer_id to finish the appointment. All the input columns need to be filled. Besides, If you are not a member, you cannot finish this process. 
+
+#### 4./app_success: Appointent status page.
+- If you successfully made an appointment, the details of the appointmet and contact information of the service provider will be shown on the screen. However, if you fail to fulfill all the appoinment registration requirements, an error message will be returned.
+
+#### 5. /order_list: Admin check for all existing appointments
+- Show all the infos (app_id, cus_id, own_id, own_name, cus_name, date, time, etc.)
+- (Not finished) Ranking.
+
+#### 6. /service: Admin check for all existing services
+- You can choose to modify your service info at this page.
+
+#### 7. /modifyservice: Service modifcations: ADD/UPDATE/DELETE
+- You can add/update/delete your services here. Note there are a few constraints. If you violate any one of them, an alert message will be shown.
+
+#### 8. /signup: Sign up page for all users.
+- You can sign up as a new member. Note: If you are not a member, you can't make an appointment.
+
+#### 9. /signup_success: signup status page
+
+#### 10. /login: Login page.
+- You can login in on this page.
 
 
 
-
-
-
-1. Find all owners who are at least specialized in keeping '{}'. {} - pet name
-
-2. Show top K results
-
-3. Let customers define the variable 'resources' by choosing and combining variables from:
-   [num(house_type), num(pet)_types, length(available_time), expense, etc.],
-   Find owner that has best 'resources'
-
-4. Define 'Pet Clubs':
-    a. If the pet owners have same pet_type offerings.
-    b. If they are in the same area
-   Show all 'Pet Clubs'
-   
-5. 每个owner都应该有一个'Ratings List', rank by avg(Ratings), list all pet owners 
-   that have ratings than avg(ratings)
-
-6. 加admin page， 在UI上就实现增减操作
-
-7. 在返回的Table上 每个column实现click就排序的操作
-
-8. Debug Info 记得关闭
-
-9. 自动弹框加入会员
-
-10. 做成响应式，只包括手机和电脑
-
-11. 标签做成可叉示例
-
-12. 参考deliveroo： Pet Owners near NUS, 然后做成图片选项卡
-
-13. Deliveroo Food种类做的不好，因为种类太多，看着费劲还记不住，两个思路：1. 大类，再细分小类 2. 添加一个即使搜索框
-
-14. 主页：下载我们的app！
