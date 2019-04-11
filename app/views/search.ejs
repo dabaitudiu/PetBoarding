@@ -219,25 +219,19 @@
                                     <% console.log(customer_name)%>
                                     <h1 style="background-color:bisque; text-align:center;font-size:600%">Welcome! <%= customer_name%></h1>
                                 <% } else {%>
-                                    <div style="text-align:center;">
-                                        <a href="login" style="font-size:500%;background-color: burlywood">login</a>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="signup"style="font-size:500%; background-color:orange;">signup</a>
-                                    </div>
+                                    <section class="jumbotron text-center">
+                                            <div class="container">
+                                               
+                                              <p class="lead text-muted">Please Log in or sign up first! </p>
+    
+                                              <p>
+                                                <a href="login" class="btn btn-primary my-2">Login page</a>
+                                                <a href="signup" class="btn btn-secondary my-2">Register</a>
+                                              </p>
+                                            </div>
+                                    </section>
+                                     
                                 <% } %>
-                                <div style="font-size:300%;">Currently no results shown. You can have a look of our collabrators before you decide:</div>
-                                <div style="font-size: 500%;text-align: center; color:purple;">
-                                    Google
-                                </div>
-                                <div style="font-size: 500%;text-align: center; color:orange;">
-                                    Linkedin
-                                </div>
-                                <div style="font-size: 500%;text-align: center; color:peru;">
-                                    Amazon
-                                </div>
-                                <div style="font-size: 500%;text-align: center; color:royalblue;">
-                                    Facebook
-                                </div>
                             <% } else {%>
                                 <% if (hasInput === 0) { %>
                                     <div style="font-size:50px; padding:20px;">You must specify at least one constraint(pet_type). No matter, have a look at our recommendations!</div>
@@ -252,36 +246,33 @@
                                     </div> -->
                                     <div style="font-size:20px; padding:30px;"><%=data.length %> results found.</div>
                                 <% } %>
-                                <div class="cards-2 section-gray">
-                                        <div class="container">
-                                            <%= console.log(data.length) %>
-                                            <% for (var i = 0; i < data.length; i++) {%>
-                                                <div class="col-md-3">
-                                                        <div class="card card-blog">
-                                                            <div class="card-image">
-                                                                    <img class="img img-raised" src="<%= data[i].owner_img_url%>" style="height: 200px;width: 300px;"> 
-                                                                <div class="ripple-cont"></div>
-                                                            </div>
-                                                            <div class="table">
-                                                                <h4 class="card-caption">
-                                                                    <%= data[i].user_name %>
-                                                                </h4>
-                                                                <div style="font-size:100%">
-                                                                    <p class="card-description"> Ratings: <%= data[i].ratings%> </p>
-                                                                    <p class="card-description"> Pet Type(s): <%= data[i].pet_type%> </p>
-                                                                    <p class="card-description"> House Type: <%= data[i].house_type%> </p>
-                                                                    <p class="card-description"> <%= moment(data[i].date_start).format('MMM-DD-YYYY')%> - <%= moment(data[i].date_end).format('MMM-DD-YYYY')%></p>
-                                                                    <p class="card-description"> Price: <%= data[i].price%> </p>
-                                                                </div>
-                                                                <form action="owner_info" method="GET">
-                                                                        <input type="hidden" name="name" value="<%= data[i].user_name %>"/>
-                                                                        <input type="submit" value="Contact Me"/>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            <% } %>
-                                        </div>
+                                <div class="card-columns">                                       
+                                    <%= console.log(data.length) %>
+                                    <% for (var i = 0; i < data.length; i++) {%>
+                                        <div class="card">
+                                            <div class="card-img-top">
+                                                    <img class="img img-raised" src="<%= data[i].owner_img_url%>" style="height: 250px;width: 430px;"> 
+                                                <div class="ripple-cont"></div>
+                                            </div>
+                                             
+                                            <div class="card-body">
+                                                <h4 class="card-title">
+                                                    <%= data[i].user_name %>
+                                                </h4>
+                                                 
+                                                    <p class="card-text"> Ratings: <%= data[i].ratings%> </p>
+                                                    <p class="card-text"> Pet Type(s): <%= data[i].pet_type%> </p>
+                                                    <p class="card-text"> House Type: <%= data[i].house_type%> </p>
+                                                    <p class="card-text"> <%= moment(data[i].date_start).format('MMM-DD-YYYY')%> - <%= moment(data[i].date_end).format('MMM-DD-YYYY')%></p>
+                                                    <p class="card-text"> Price: <%= data[i].price%> </p>
+                                                 
+                                                <form action="owner_info" method="GET">
+                                                        <input type="hidden" name="name" value="<%= data[i].user_name %>"/>
+                                                        <input type="submit" value="Contact Me"/>
+                                                </form>
+                                            </div>
+                                        </div> 
+                                    <% } %>                                       
                                 </div>
                             <% } %>
     
