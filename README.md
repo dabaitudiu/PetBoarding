@@ -38,7 +38,6 @@ You can make a search here. Afterwards, it will post the info to /search page.
 
 #### 3. /owner_info: Detail information of the service providers.
 - On the left side, there is a "CONTACT ME". If you have made your choice, click it and it will direct you to the appointment page.
-- (Forget to add) A return to search/index page button.
 
 #### 4. /appointment: Appointment page.
 - Page where you can make appointment with the service provider you chose. You need to enter your customer_id to finish the appointment. All the input columns need to be filled. Besides, If you are not a member, you cannot finish this process. 
