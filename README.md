@@ -1,8 +1,10 @@
 # FindPetCaring
 
-## Usage
+## How to deploy this project
 
-### Database Generation
+### 1 Database Generation
+Scripts are in ./tables
+
 ```
 Run in the following sequence:
 1. user_info
@@ -18,6 +20,8 @@ Run in the following sequence:
 11. owner_service
 12. factions
 ```
+### 2 Change credentials of your own db
+Change db name & pwd of the db to your own (in index.js file). A console log showing successful db connection should be observed.
 
 ### Page Clarification
 **to view all functions without front-end, approach to branch01**
