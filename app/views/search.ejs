@@ -1,18 +1,116 @@
 <!DOCTYPE html>
-<html style="height:100%;width:100%; background-color:beige;">
+<html lang="en">
 <head>
-   <title>Database</title>
-   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-   <link href="/css/style.css" rel="stylesheet" type="text/css">
-   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
-   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-   <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
-   <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="/css/cards-style.css" type="text/css" /> </head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+        
+    
+    <title>Search Engine</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        body {
+        font-size: .875rem;
+        }
+
+        .feather {
+        width: 16px;
+        height: 16px;
+        vertical-align: text-bottom;
+        }
+
+        /*
+        * Sidebar
+        */
+
+        .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100; /* Behind the navbar */
+        padding: 0;
+        box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 48px; /* Height of navbar */
+        height: calc(100vh - 48px);
+        padding-top: .5rem;
+        overflow-x: hidden;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+        }
+
+        .sidebar .nav-link {
+        font-weight: 500;
+        color: #333;
+        }
+
+        .sidebar .nav-link .feather {
+        margin-right: 4px;
+        color: #999;
+        }
+
+        .sidebar .nav-link.active {
+        color: #007bff;
+        }
+
+        .sidebar .nav-link:hover .feather,
+        .sidebar .nav-link.active .feather {
+        color: inherit;
+        }
+
+        .sidebar-heading {
+        font-size: .75rem;
+        text-transform: uppercase;
+        }
+
+        /*
+        * Navbar
+        */
+        
+        .navbar .form-control {
+        padding: .75rem 1rem;
+        border-width: 0;
+        border-radius: 0;
+        }
+
+        .form-control-dark {
+        color: #fff;
+        background-color: rgba(255, 255, 255, .1);
+        border-color: rgba(255, 255, 255, .1);
+        }
+
+        .form-control-dark:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+        }
+
+        /*
+        * Utilities
+        */
+
+        .border-top { border-top: 1px solid #e5e5e5; }
+        .border-bottom { border-bottom: 1px solid #e5e5e5; }
+    </style>
+
+    <!-- Custom styles for this template -->
+
 </head>
+
 <body>
-    <div class="bar">
-        <%= title%> 
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/pet">PetCare</a>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    </nav>
+    <!-- <div class="bar"> -->
+        <!-- <%= title%>  -->
         <!-- <% if (typeof customer_name != 'undefined') {%>
             <% console.log(customer_name)%>
             <label id="ggg" for="aaa" style="background-color:bisque">Welcome! <%= customer_name%></label>
@@ -20,89 +118,102 @@
             <a href="login">login</a>
             <a href="signup">signup</a>
         <% } %> -->
-    </div>
-    <div class="main-box" style="background-color:beige;"> 
-            
-        <div class="row" style="height: 100%;">
-                <!-- Left Serach Bar -->
-                <div class="col-md-3" style="height: 100%; padding-right: 0px;padding-left:10px;">
-                    <div style="padding-left: 5px;background-color:white;height: 100%">
-                        <form id="html_form" action="search" role="form" method="post">
+    <!-- </div> -->
+    <div class="container-fluid"> 
+        <div class="row" >
+            <!-- Left Serach Bar -->
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky" >
+                <div style="padding-left: 10px;">
+                <form id="html_form" action="search" role="form" method="post">
+                     
+                        <!-- Pet Types -->
+                         
+                        <div id="pet_type" class="form-group" style="width:80%;text-align:center;">
+                            <label for="pet_type_select" >Pet Species:</label>
+                            <select class="form-control" name="species" >
+                                <option value=""></option>
+                                <option value="dog">dog</option>
+                                <option value="cat">cat</option>
+                                <option value="parrot">parrot</option>
+                                <option value="fish">fish</option>
+                                <option value="hawk">hawk</option>
+                                <option value="horse">horse</option>
+                                <option value="fish">duck</option>
+                                <option value="other">others</option>
+                            </select>
+                        </div>
+                        
 
-                            <!-- Pet Types -->
-                            <div id="pet_type" style="padding-top:10px; text-align:center">
-                                <label for="pet_type_select">Pet Species:</label>
-                                <select class="form-control" name="species" style="width:50%; position: relative;left: 25%">
-                                    <option value=""></option>
-                                    <option value="dog">dog</option>
-                                    <option value="cat">cat</option>
-                                    <option value="parrot">parrot</option>
-                                    <option value="fish">fish</option>
-                                    <option value="hawk">hawk</option>
-                                    <option value="horse">horse</option>
-                                    <option value="fish">duck</option>
-                                    <option value="other">others</option>
-                                </select>
-                            </div>
+                        <!-- Pet Age -->
+                        <div id="pet_age" class="form-group" style="width:80%;text-align:center">
+                            <label for="pet_age_select">Pet's Age</label>
+                            <select class="form-control" name="years" >
+                                <option value=""></option>
+                                <option value="0-3">0-3</option>
+                                <option value="3-5">3-5</option>
+                                <option value="6-10">6-10</option>
+                                <option value="10+">10+</option>
+                            </select>
+                        </div>
 
-                            <!-- Pet Age -->
-                            <div id="pet_age" style="padding-top:10px; text-align:center">
-                                <label for="pet_age_select">Pet's Age</label>
-                                <select class="form-control" name="years" style="width:50%; position: relative;left: 25%">
-                                    <option value=""></option>
-                                    <option value="0-3">0-3</option>
-                                    <option value="3-5">3-5</option>
-                                    <option value="6-10">6-10</option>
-                                    <option value="10+">10+</option>
-                                </select>
+                        <!-- Date -->
+                        <div class="form-group" style="width:80%;text-align:center;">
+                        <div class="form-row" >
+                            <div class="form-group ">
+                                <label for="From">From</label>
+                                <input class="form-control" type="date" name="start_date">
                             </div>
+                            <div class="form-group">
+                                <label for="inputState">To</label>
+                                <input class="form-control" type="date" name="end_date">
+                            </div>
+                        </div>
+                        </div>
 
-                            <!-- Date -->
-                            <div class="form-row" style="padding-top:10px; text-align:center">
-                                    <div class="form-group col-md-6">
-                                      <label for="From">From</label>
-                                      <input class="form-control" type="date" name="start_date">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="inputState">To</label>
-                                      <input class="form-control" type="date" name="end_date">
-                                    </div>
+                        <!-- Price -->
+                        <div class="form-group" style="width:80%;text-align:center;">
+                        <div class="form-row" >
+                            <div class="form-group ">
+                                <label for="From">Min Price</label>
+                                <input type="text" placeholder="Min" name="price_min">
+                            </div>         
+                            <div class="form-group ">
+                                <label for="From">Max Price</label>
+                                <input type="text" placeholder="Max" name="price_max">
                             </div>
+                        </div>
+                        </div>
 
-                            <!-- Price -->
-                            <div class="form-row" style="padding-top:10px; text-align:center">
-                                <div class="form-group col-md-6">
-                                    <label for="From">Min Price</label>
-                                    <input type="text" placeholder="Min" name="price_min">
-                                </div>         
-                                <div class="form-group col-md-6">
-                                    <label for="From">Max Price</label>
-                                    <input type="text" placeholder="Max" name="price_max">
-                                </div>
-                            </div>
+                        <!-- House Type -->
+                        <div class="form-group" style="width:80%;text-align:center">
+                            <label for="exampleFormControlSelect1">House Type</label>
+                            <select class="form-control" name="house">
+                                <option value="" selected="selected"></option>
+                                <option value="house with swimming pool">house with swimming pool</option>
+                                <option value="house with yard">house with yard</option>
+                                <option value="big house">big house</option>
+                                <option value="middle house">middle house</option>
+                                <option value="small house">small house</option>
+                            </select>
+                        </div>
 
-                            <!-- House Type -->
-                            <div class="form-row" style="padding-top:10px; text-align:center">
-                                <label for="exampleFormControlSelect1">House Type</label>
-                                <select class="form-control" name="house" style="width:70%; position: relative;left: 15%">
-                                    <option value="" selected="selected"></option>
-                                    <option value="house with swimming pool">house with swimming pool</option>
-                                    <option value="house with yard">house with yard</option>
-                                    <option value="big house">big house</option>
-                                    <option value="middle house">middle house</option>
-                                    <option value="small house">small house</option>
-                                </select>
-                            </div>
-                            <div class="form-row" style="padding-top:10px; text-align:center">
+                        <div class="form-row">
+                            <div class="text-center" style="padding-left: 70px;">
                             <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        
+                </form>
+      
                 </div>
+            </div>
+            </nav>
 
-                <!-- Right Result Area -->
-                <div class="col-md-9" style="height: 100%; padding-right: 5px; padding-left:5px;" >
-                    <div style="padding-left: 5px; background-color:white;height: 100%;">
+            <!-- Right Result Area -->
+            <main role="main" class="col-md-8 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <div >
                             <% if (data.length === 1 && data[0] === "RESERVED") {%>
                                 <% if (typeof customer_name != 'undefined') {%>
                                     <% console.log(customer_name)%>
@@ -131,15 +242,15 @@
                                 <% if (hasInput === 0) { %>
                                     <div style="font-size:50px; padding:20px;">You must specify at least one constraint(pet_type). No matter, have a look at our recommendations!</div>
                                 <% } else {%>
-                                    <div style="font-size: 30px;background-color:floralwhite">
-                                        Your constraints:
-                                        <div>Pet Type: <%=constraints[0]%></div>
+                                    <!-- <div style="font-size: 30px;background-color:floralwhite"> -->
+                                        <!-- Your constraints: -->
+                                        <!-- <div>Pet Type: <%=constraints[0]%></div>
                                         <div>Pet Age: <%=constraints[1]%></div>
                                         <div>House Type: <%=constraints[2]%></div>
                                         <div>Date: <%=constraints[3]%> to <%=constraints[4]%></div>
                                         <div>Price: <%=constraints[5]%> to <%=constraints[6]%></div>
-                                    </div>
-                                    <div style="font-size:50px; padding:20px;"><%=data.length %> results found.</div>
+                                    </div> -->
+                                    <div style="font-size:20px; padding:30px;"><%=data.length %> results found.</div>
                                 <% } %>
                                 <div class="cards-2 section-gray">
                                         <div class="container">
@@ -148,7 +259,7 @@
                                                 <div class="col-md-3">
                                                         <div class="card card-blog">
                                                             <div class="card-image">
-                                                                 <img class="img img-raised" src="<%= data[i].owner_img_url%>" style="height: 200px;width: 300px;"> 
+                                                                    <img class="img img-raised" src="<%= data[i].owner_img_url%>" style="height: 200px;width: 300px;"> 
                                                                 <div class="ripple-cont"></div>
                                                             </div>
                                                             <div class="table">
@@ -171,13 +282,16 @@
                                                     </div>
                                             <% } %>
                                         </div>
-                                    </div>
+                                </div>
                             <% } %>
-
+    
                             
-
-                    </div>                    
+    
+                    </div>
                 </div>
+
+            </main>
+             
         </div>
     </div>
 
