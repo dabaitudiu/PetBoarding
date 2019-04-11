@@ -8,14 +8,15 @@ Run in the following sequence:
 1. user_info
 2. owner_info
 3. customer_info
-4. customer_pet_info
-5. appointments
-6. owner_appointments
-7. customer_appointments
-8. reviews
-9. service
-10. owner_service
-11. factions
+4. pet_info
+5. customer_pet_info
+6. appointments
+7. owner_appointments
+8. customer_appointments
+9. reviews
+10. service
+11. owner_service
+12. factions
 ```
 
 ### Page Clarification
