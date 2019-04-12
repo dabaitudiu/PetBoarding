@@ -21,7 +21,7 @@ Run in the following sequence:
 12. factions
 ```
 ### 2 Change credentials of your own db
-Change db name & pwd of the db to your own (in index.js file). A console log showing successful db connection should be observed.
+Change db name & pwd of the db to your own (in all .js file). A console log showing successful db connection should be observed.
 
 ### Page Clarification
 **to view all functions without front-end, approach to branch01**
