@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Modify Services</title>
+    </head>
+    <body>
+        <h1 style="text-align: center;background-color: navajowhite">Modify Services</h1>
+        <div>
+            <form action="modifystatus" method="POST">
+                <div>
+                        Please indicate your action here:
+                        <select name="action_name" id="action">
+                            <option value="add">add</option>
+                            <option value="update">update</option>
+                            <option value="delete">delete</option>
+                        </select>
+                    </div>
+                    <div>
+                        If you want to delete/update, input your service_id here:
+                        <input type="text" name="service_id">
+                    </div>
+            If you want to add/update, please input your (new) values:                
+                <div>
+                    <label for="name">owner_id:</label>
+                    <input type="text" name="owner_id"/>
+                </div>
+                <div>
+                    <label for="name">owner_password:</label>
+                    <input type="text" name="owner_password"/>
+                </div>
+                <div>
+                    <label for="price">price:</label>
+                    <input type="text" name="price"/>
+                </div>
+                <div>
+                    <label for="name">date_start:</label>
+                    <input type="date" name="date_start"/>
+                </div>
+                <div>
+                    <label for="name">date_end:</label>
+                    <input type="date" name="date_end"/>
+                </div>
+                <div>
+                    <label for="pet_type">pet_type:</label>
+                    <input type="text" name="pet_type"/>
+                </div>
+                <div>
+                    <label for="name">house_type:</label>
+                    <input type="text" name="house_type"/>
+                </div>
+                <div>
+                    <label for="name">years:</label>
+                    <input type="text" name="years"/>
+                </div>
+                <button type="submit">submit</button>
+            </form>
+        </div>
+    </body>
+</html>

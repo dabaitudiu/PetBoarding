@@ -2,27 +2,28 @@
 <html>
     <head>
         <title>
-            登陆后状态
+            Login Status
         </title>
     </head>
 
     <body>
-        <h1>状态：</h1>
+        <h1>Status：</h1>
         <% if (data.length === 0) {%>
-            无此用户
+            No Such User
+            <div>
+                <a class="" href="javascript:history.go(-1)" style="font-size:30px;">Back</a>
+            </div>
         <% } else { %>
-            <% if(data[0].customer_password === password) {%>
-                恭喜你！成功登录！
+            <% if(data[0].user_password === password) {%>
+                Welcome! You have successfully logined in.
                 <form action="search" method="GET">
                     <input type="hidden" name="customer_id" value="<%= data[0].customer_id %>"/>
-                    <input type="hidden" name="customer_name" value="<%= data[0].customer_name %>"/>
-                    <button type="submit">点击返回主页</button>
+                    <input type="hidden" name="customer_name" value="<%= data[0].user_name %>"/>
+                    <button type="submit">Return to the main page</button>
                 </form>
             <% } else{ %>
-                密码错误，<a href="login">点击返回</a> 
+                Wrong password，<a href="login">Return</a> 
             <% } %>
         <% } %>
-        
-
     </body>
 </html>

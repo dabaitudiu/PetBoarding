@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Service Admin Page</title>
+        <title>Database</title>
+            <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+            <link href="/css/style.css" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
+            <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+            <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="/css/cards-style.css" type="text/css" /> </head>
+    </head>
+    <body>
+        <h1>Service Admin Page</h1>
+        <div>
+            <h2> I want to <a href="modifyservice">add/update/delete</a> my service</h2>
+                <!-- <form action="modify" method="POST">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked> ADD
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="option2" autocomplete="off"> UPDATE
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="option3" autocomplete="off"> DELETE
+                        </label>
+                    </div>
+                    &nbsp;&nbsp;
+                    <button class="btn btn-primary" type="submit">Do it Now</button>
+                </form> -->
+            
+            
+        </div>
+        <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">service_id</th>
+                        <th scope="col">price</th>
+                        <th scope="col">date_start</th>
+                        <th scope="col">date_end</th>
+                        <th scope="col">pet_type</th>
+                        <th scope="col">house_type</th>
+                        <th scope="col">years</th>
+                    </tr>
+                </thead>
+                <% for (var i = 0; i < data.length; i++) {%>
+                    <tr>
+                        <th scope="row"><%=i+1%></th>
+                            <td><%=data[i].service_id%></td>
+                            <td><%=data[i].price%></td>
+                            <td><%=moment(data[i].date_start).format('MMM-DD-YYYY')%></td>
+                            <td><%=moment(data[i].date_end).format('MMM-DD-YYYY')%></td>
+                            <td><%=data[i].pet_type%></td>
+                            <td><%=data[i].house_type%></td>
+                            <td><%=data[i].years%></td>
+                    </tr>
+        <% } %>
+    </table>
+    </body>
+</html>

@@ -234,16 +234,16 @@
                                 <% } %>
                             <% } else {%>
                                 <% if (hasInput === 0) { %>
-                                    <div style="font-size:50px; padding:20px;">You must specify at least one constraint(pet_type). No matter, have a look at our recommendations!</div>
+                                    <div style="font-size:30px; padding:20px; font: 'Lucida Sans';">You must specify at least one constraint(pet_type). No matter, have a look at our recommendations!</div>
                                 <% } else {%>
-                                    <!-- <div style="font-size: 30px;background-color:floralwhite"> -->
-                                        <!-- Your constraints: -->
-                                        <!-- <div>Pet Type: <%=constraints[0]%></div>
-                                        <div>Pet Age: <%=constraints[1]%></div>
-                                        <div>House Type: <%=constraints[2]%></div>
-                                        <div>Date: <%=constraints[3]%> to <%=constraints[4]%></div>
-                                        <div>Price: <%=constraints[5]%> to <%=constraints[6]%></div>
-                                    </div> -->
+                                    <div style="font-size: 20px;">
+                                        Your constraints:
+                                        <% if (constraints[0] != "") {%><div>Pet Type: <%=constraints[0]%></div><% } %>
+                                        <% if (constraints[1] != "") {%><div>Pet Age: <%=constraints[1]%></div><% } %>
+                                        <% if (constraints[2] != "") {%><div>House Type: <%=constraints[2]%></div><% } %>
+                                        <% if (constraints[3] != "" || constraints[4] != "") {%><div>Date: <%=constraints[3]%> to <%=constraints[4]%></div><% } %>
+                                        <% if (constraints[5] != "" || constraints[6] != "") {%><div>Price: <%=constraints[5]%> to <%=constraints[6]%></div><% } %>
+                                    </div> 
                                     <div style="font-size:20px; padding:30px;"><%=data.length %> results found.</div>
                                 <% } %>
                                 <div class="card-columns">                                       
@@ -260,7 +260,7 @@
                                                     <%= data[i].user_name %>
                                                 </h4>
                                                  
-                                                    <p class="card-text"> Ratings: <%= data[i].ratings%> </p>
+                                                    <p class="card-text"> Ratings: <%= Number(data[i].avg).toFixed(2)%> </p>
                                                     <p class="card-text"> Pet Type(s): <%= data[i].pet_type%> </p>
                                                     <p class="card-text"> House Type: <%= data[i].house_type%> </p>
                                                     <p class="card-text"> <%= moment(data[i].date_start).format('MMM-DD-YYYY')%> - <%= moment(data[i].date_end).format('MMM-DD-YYYY')%></p>

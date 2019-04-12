@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>modify status</title>
+    </head>
+    <body>
+        <h1>Modified Status</h1>
+        <% if (typeof error != 'undefined') {%>
+            <h2>Error: <%=error%></h2>
+        <% } else { %>
+            <%=operation%>
+            <a href="search" style="font-size:30px;"">Back to Search Page</a>&nbsp;&nbsp;
+            <a href="modifyservice" style="font-size:30px;">Back to modifyservice Page</a>
+        <% } %>
+    </body>
+</html>

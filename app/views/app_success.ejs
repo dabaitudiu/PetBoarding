@@ -7,33 +7,40 @@
     </head>
     <body>
         <% if (typeof error != 'undefined') {%>
-            You violated the constraints of the table.
-            <div>
-                Error is <%=error%>
+            <div style="font-size:30px;background-color:antiquewhite;text-align:center;">
+                You violated the constraints of the table.
+                <div style="font-size:40px;color:brown;"> 
+                    Error is: <%=error%>
+                </div>
+                <div>
+                    <a class="" href="javascript:history.go(-1)" style="font-size:30px;">Back</a>
+                </div>
             </div>
+        <% } else { %>
+            <div>
+                <h1>Appointment successfully made!</h1>
+                <h2>Your appointment details is as follows:</h2>
+                <div>
+                    appointment id: <%=data[0]%>
+                </div>
+                <div>
+                    owner name: <%=data[3]%>
+                </div>
+                <div>
+                    owner_email: <%=data[4]%>
+                </div>
+                <div>
+                    owner_phone: <%=data[5]%>
+                </div>
+                <div>
+                    date: <%=data[1]%>
+                </div>
+                <div>
+                    time: <%=data[2]%>
+                </div>
+                <a href="pet" style="background-color:gold;font-size:30px;">Back to Main Page.</a>        
         <% } %>
-        <div>
-            <h1>Appointment successfully made!</h1>
-            <h2>Your appointment details is as follows:</h2>
-            <div>
-                appointment id: <%=data[0]%>
-            </div>
-            <div>
-                owner name: <%=data[3]%>
-            </div>
-            <div>
-                owner_email: <%=data[4]%>
-            </div>
-            <div>
-                owner_phone: <%=data[5]%>
-            </div>
-            <div>
-                date: <%=data[1]%>
-            </div>
-            <div>
-                time: <%=data[2]%>
-            </div>
-            <a href="search" style="background-color:cornsilk;font-size:50px;">Click here return to search page.</a>
+        
         </div>
     </body>
 </html>
