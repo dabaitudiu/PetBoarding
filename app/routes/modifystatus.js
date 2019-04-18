@@ -76,7 +76,7 @@ router.post('/', function(req, res, next) {
         var update_query = "update service set ";
         update_query += "price='"+ price + "', date_start='" + date_start + "', date_end='" + date_end + "', pet_type='" + pet_type + "', house_type='" + house_type + "', years='" + years + "'";
         update_query += " where service_id='"+service_id+"'";
-        console.log("Update query is " + delete_query);
+        console.log("Update query is " + update_query);
         pool.query(update_query, (err, data) => {
             if (err) {
               return res.render('modifystatus', {error:err.message});
