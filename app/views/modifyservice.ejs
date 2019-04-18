@@ -2,10 +2,43 @@
 <html>
     <head>
         <title>Modify Services</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <style>
+            .carousel-inner > .item >img{
+            min-height : 300px;
+            max-height : 300px;
+            width : 100%;
+            }
+    
+            .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            }
+            
+    
+            @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+            }
+        </style>
+        <!-- Custom styles for this template -->
+        <link href="/css/pet.css" rel="stylesheet" type="text/css">
+    
     </head>
     <body>
         <h1 style="text-align: center;background-color: navajowhite">Modify Services</h1>
-        <div>
+        <!-- <div>
             <form action="modifystatus" method="POST">
                 <div>
                         Please indicate your action here:
@@ -54,6 +87,126 @@
                 </div>
                 <button type="submit">submit</button>
             </form>
+        </div> -->
+
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Add New Service
+                    </button>
+                </h5>
+                </div>
+            
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                        <form action="modifystatus" method="POST">         
+                            <input type="hidden" name="action_name" value="add"> 
+                                <div>
+                                    <label for="name">owner_id:</label>
+                                    <input type="text" name="owner_id" required/>
+                                </div>
+                                <div>
+                                    <label for="price">price:</label>
+                                    <input type="text" name="price" required/>
+                                </div>
+                                <div>
+                                    <label for="name">date_start:</label>
+                                    <input type="date" name="date_start" required/>
+                                </div>
+                                <div>
+                                    <label for="name">date_end:</label>
+                                    <input type="date" name="date_end" required/>
+                                </div>
+                                <div>
+                                    <label for="pet_type">pet_type:</label>
+                                    <input type="text" name="pet_type" required/>
+                                </div>
+                                <div>
+                                    <label for="name">house_type:</label>
+                                    <input type="text" name="house_type" required/>
+                                </div>
+                                <div>
+                                    <label for="name">years:</label>
+                                    <input type="text" name="years" required/>
+                                </div>
+                            <button type="submit" class="btn btn-info">Add</button>
+                        </form>        
+                </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Delete Services
+                    </button>
+                </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                        <form action="modifystatus" method="POST">    
+                            <input type="hidden" name="action_name" value="delete">      
+                            <div>
+                                <label for="customer_id">Your Service ID:</label>
+                                <input type="text" name="service_id"/>
+                            </div>
+                            <button type="submit" class="btn btn-info">Delete</button>
+                        </form>    
+                </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Update Services
+                    </button>
+                </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                        <form action="modifystatus" method="POST">        
+                            <input type="hidden" name="action_name" value="update"> 
+                            <div>
+                                    <label for="customer_id">Your Service ID:</label>
+                                    <input type="text" name="service_id"/>
+                            </div>
+                            <div>
+                                    <label for="name">owner_id:</label>
+                                    <input type="text" name="owner_id"/>
+                                </div>
+                                <div>
+                                    <label for="price">price:</label>
+                                    <input type="text" name="price"/>
+                                </div>
+                                <div>
+                                    <label for="name">date_start:</label>
+                                    <input type="date" name="date_start"/>
+                                </div>
+                                <div>
+                                    <label for="name">date_end:</label>
+                                    <input type="date" name="date_end"/>
+                                </div>
+                                <div>
+                                    <label for="pet_type">pet_type:</label>
+                                    <input type="text" name="pet_type"/>
+                                </div>
+                                <div>
+                                    <label for="name">house_type:</label>
+                                    <input type="text" name="house_type"/>
+                                </div>
+                                <div>
+                                    <label for="name">years:</label>
+                                    <input type="text" name="years"/>
+                                </div>
+                            <button type="submit" class="btn btn-info">Update</button>
+                        </form>  
+                </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

@@ -22,8 +22,7 @@ router.post('/', function(req, res, next) {
     var password = req.body.password;
 
     // var sql_query = "select * from customer_info where customer_email='"+email;
-    var sql_query = "select * from customer_info where customer_name='libai'";
-
+    var sql_query = "select * from customer_info natural join user_info where user_email='" + email + "'";
 
     pool.query(sql_query, (err, data) => {
 		  res.render('post_login', {name:email, data:data.rows, password:password});

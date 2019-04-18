@@ -45,7 +45,7 @@ router.post('/', function(req, res, next) {
 
     var new_service_id = makeid(10);
 
-    console.log("The option is " + option);
+    // console.log("The option is " + option);
 
     if (option === 'delete') {
         console.log("The operation is delete. ")

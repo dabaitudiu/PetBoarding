@@ -17,6 +17,9 @@ const pool = new Pool({
 })
 
 router.get('/', function(req, res, next) {
+  if (err) {
+  return res.render('app_success',{data:mydata,error:err.message});
+}
     res.render('signup', { title: 'User Log-in' });
 });
 

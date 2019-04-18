@@ -28,19 +28,29 @@ router.post('/', function(req, res, next) {
     var customer_id = req.body.customer_id;
     var sql_query;
 
+    var block = "with customer as \
+        (select customer_id as cid, user_name as cname, user_phone as cphone, user_email as cemail from customer_info join user_info on customer_id=user_id),\
+        owners as (select owner_id as oid, user_name as oname, user_phone as ophone, user_email as oemail from owner_info join user_info on owner_id=user_id)\
+        select * from appointments natural join customer_appointments natural join owner_appointments \
+        join customer on customer_id = cid\
+        join owners on owner_id=oid";
+
     if (typeof appointment_id != 'undefined') {
-        sql_query = "select * from appointments where appointment_id='" + appointment_id + "'";
+        sql_query = block + " where appointment_id='" + appointment_id + "'";
     } else if (typeof customer_id != 'undefined') {
-        sql_query = "select * from appointments where customer_id='" + customer_id + "'";
+        sql_query = block + " where customer_id='" + customer_id + "'";
     } else {
-        sql_query = "select * form appointments where owner_id='" + owner_id + "'";
+        sql_query = block + " where owner_id='" + owner_id + "'";
     }
 
     console.log("SQL INQUIRY:" + sql_query);
 
     pool.query(sql_query, (err, data) => {
-        console.log(JSON.stringify(data));
-        res.render('inquiry',{data:data.rows});
+        // console.log(JSON.stringify(data));
+        if (err) {
+            res.render('app_success', {error: err.message});
+        }
+        res.render('inquiry',{data:data.rows,moment:moment});
     });
   
   });

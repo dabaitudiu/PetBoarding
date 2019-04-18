@@ -10,10 +10,10 @@ const pool = new Pool({
   port: 5432,
 })
 
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
+// pool.query('SELECT NOW()', (err, res) => {
+//   // console.log(err, res)
+//   pool.end()
+// })
 
 router.get('/', function(req, res, next) {
   res.render('pet', { title: 'Pet Keeper Search Engine' });

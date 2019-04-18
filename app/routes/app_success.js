@@ -52,16 +52,16 @@ router.post('/', function(req, res, next) {
 
     var mydata = [appointment_id,date,time,owner_name,owner_email,owner_phone];
 
-    var sql_query = "insert into appointments values";
+    var sql_query = "begin transaction; insert into appointments values";
     var insert_query = sql_query + "('" + appointment_id + "','" + date + "','" + time + "','" + status + "');";
 
     insert_query += "insert into customer_appointments values";
     insert_query += "('" + customer_id + "','" + appointment_id + "');";
 
     insert_query += "insert into owner_appointments values";
-    insert_query += "('" + owner_id + "','" + appointment_id + "')";
+    insert_query += "('" + owner_id + "','" + appointment_id + "'); commit;";
 
-    console.log("CHECK 2019" + insert_query);
+    console.log("CHECK 2019: " + insert_query);
 
     pool.query(insert_query, (err, data) => {
         if (err) {

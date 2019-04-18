@@ -63,15 +63,16 @@
     
             </nav>
         </header>
-        
         <% if (data.length === 0) {%>
-             
+            <div style="margin-top:30px; margin-left: 30px; font-size:20px;">
+                0 Results are showing. Please specify an existing order and user_type here:
+            </div>
             <div id="accordion">
                 <div class="card">
                     <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        I am a pet owner
+                        I am a service provider
                         </button>
                     </h5>
                     </div>
@@ -92,7 +93,7 @@
                     <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        I am a pet keeper
+                        I am a customer
                         </button>
                     </h5>
                     </div>
@@ -112,7 +113,7 @@
                     <div class="card-header" id="headingThree">
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Just want to search an appointment
+                        check with appointment id
                         </button>
                     </h5>
                     </div>
@@ -131,41 +132,31 @@
             </div>
 
         <% } else { %>
-
-                <table>
+                <table class="table table-dark" style="margin-top:30px;">
                     <tr>
                         <th>Appointment ID</th>
-                        <!-- <th>Owner Name</th> 
+                        <th>Owner Name</th> 
                         <th>Owner Email</th>
-                        <th>Owner Phone</th> -->
+                        <th>Customer Name</th>
+                        <th>Customer Email</th>
+                        <th>App Date</th>
+                        <th>App Time</th>
                         <th>Status</th>
                     </tr>
                     <% for (var i = 0; i < data.length; i++) {%>
                     <tr>
                         <th><%=data[i].appointment_id%></th>
-                        <!-- <th><%=data[i].owner_name%></th>
-                        <th><%=data[i].owner_email%></th>
-                        <th><%=data[i].owner_phone%></th> -->
+                        <th><%=data[i].oname%></th>
+                        <th><%=data[i].oemail%></th>
+                        <th><%=data[i].cname%></th>
+                        <th><%=data[i].cemail%></th>
+                        <th><%=moment(data[i].app_date).format('MMM-DD-YYYY')%></th>
+                        <th><%=data[i].app_time%></th>
                         <th><%=data[i].status%></th>
                     </tr>
                     <% } %>
                 </table>
-                If finished:
-                <form action="update" method="POST">
-                    <div>
-                        <label for="app_id">Your appointment_id:</label>
-                        <input type="text" name="appointment_id"/>
-                        <label for="rating">Rating</label>
-                        <select class="form-control" name="rating">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <button type="submit">Update Status</button>
-                </form>
+                <a href="inquiry" class="btn btn-primary">back</a>
         <% } %>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

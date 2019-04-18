@@ -21,8 +21,9 @@ var customer_name = "unknown";
 router.get('/', function(req, res, next) {
     customer_id = url.parse(req.url,true).query.customer_id;
     customer_name = url.parse(req.url,true).query.customer_name;
+    var constraints = []
     // console.log(JSON.stringify(query_set));
-    res.render('search', { title: search_title, data:["RESERVED"], customer_name:customer_name, customer_id:customer_id});
+    res.render('search', { title: search_title, data:["RESERVED"], customer_name:customer_name, customer_id:customer_id,constraints:constraints});
 });
 
 router.post('/', function(req, res, next) {
@@ -43,14 +44,16 @@ router.post('/', function(req, res, next) {
     var hasInput = 1;
 
     // Construct Specific SQL Query
-    var sql_query = "select * from service natural join owner_service natural join owner_info  join user_info on user_info.user_id = owner_info.owner_id";
+    var sql_query = "with owner_rating as (select owner_id,avg(rating) from reviews natural join appointments natural join owner_appointments natural join owner_info group by owner_id) select * from service natural join owner_service natural join owner_info natural join owner_rating join user_info on user_info.user_id = owner_info.owner_id";
     if (species != '') {
         sql_query += " WHERE pet_type='"+species+"'";
-        console.log("species is not null! It's " + species);
+        // console.log("species is not null! It's " + species);
+    } else {
+        hasInput = 0;
     }
     if (years != '') {
         sql_query += "and years='"+years+"'";
-        console.log("years is not null! It's " + years);
+        // console.log("years is not null! It's " + years);
     }
     if (house != '') {
         sql_query += "and house_type='"+house+"'";
@@ -67,18 +70,17 @@ router.post('/', function(req, res, next) {
     if (price_max != '') {
         sql_query += "and price <='"+price_max+"'";
     }
-    sql_query += ";";
 
 
-    if (sql_query === "select * from service natural join owner_service natural join owner_info  join user_info on user_info.user_id = owner_info.owner_id") {
-        console.log("OMG sql_query is EMPTY!!");
-        sql_query = "select * from service natural join owner_service natural join owner_info  join user_info on user_info.user_id = owner_info.owner_id limit 20;";
+    if (sql_query === "with owner_rating as (select owner_id,avg(rating) from reviews natural join appointments natural join owner_appointments natural join owner_info group by owner_id) select * from service natural join owner_service natural join owner_info natural join owner_rating join user_info on user_info.user_id = owner_info.owner_id") {
+        // console.log("OMG sql_query is EMPTY!!");
+        sql_query = "with owner_rating as (select owner_id,avg(rating) from reviews natural join appointments natural join owner_appointments natural join owner_info group by owner_id) select * from service natural join owner_service natural join owner_info natural join owner_rating join user_info on user_info.user_id = owner_info.owner_id limit 20;";
         hasInput = 0;
-    } else {
-        console.log("sql_query is " + sql_query);
-    }
+    } 
 
-    console.log(sql_query);
+    if (hasInput === 0) {
+        sql_query = "with owner_rating as (select owner_id,avg(rating) from reviews natural join appointments natural join owner_appointments natural join owner_info group by owner_id) select * from service natural join owner_service natural join owner_info natural join owner_rating join user_info on user_info.user_id = owner_info.owner_id limit 20;";
+    }
 
     pool.query(sql_query, (err, data) => {
 		res.render('search', { title: search_title, data: data.rows, moment: moment,hasInput:hasInput,constraints:constraints});

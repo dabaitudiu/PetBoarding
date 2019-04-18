@@ -10,7 +10,7 @@ const pool = new Pool({
   port: 5432,
 })
 
-webpage_title = "宠物托管搜索"
+webpage_title = "Pet Carer Search Engine"
 
 router.get('/', function(req, res, next) {
   res.render('pet', { title: webpage_title });

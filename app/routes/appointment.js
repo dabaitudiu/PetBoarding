@@ -15,7 +15,7 @@ const pool = new Pool({
   port: 5432,
 })
 
-var search_title = "预约分页";
+var search_title = "appointment page";
 
 router.get('/', function(req, res, next) {
   var owner_id = url.parse(req.url,true).query.owner_id;

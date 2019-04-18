@@ -43,6 +43,11 @@ var appSuccessRouter = require('./routes/app_success');
 // var customerRouter = require('./routes/customer');
 var inquiryRouter = require('./routes/inquiry');
 var updateStatusRouter = require('./routes/update');
+var orderlistRouter = require('./routes/orderlist');
+var serviceRouter = require('./routes/service');
+var modifyserviceRouter = require('./routes/modifyservice');
+var modifystatusRouter = require('./routes/modifystatus');
+
 
 var app = express();
 
@@ -96,6 +101,10 @@ app.use('/app_success',appSuccessRouter);
 // app.use('/customer',customerRouter);
 app.use('/inquiry',inquiryRouter);
 app.use('/update',updateStatusRouter);
+app.use('/orderlist', orderlistRouter);
+app.use('/service',serviceRouter);
+app.use('/modifyservice',modifyserviceRouter);
+app.use('/modifystatus',modifystatusRouter);
 
 
 // catch 404 and forward to error handler

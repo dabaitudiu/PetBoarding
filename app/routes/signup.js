@@ -33,17 +33,17 @@ router.post('/', function(req, res, next) {
     var email = req.body.email;
     var phone = req.body.phone;
     var password = req.body.password;
-    var sql_query = "INSERT INTO user_info VALUES";
+    var sql_query = "begin transaction; INSERT INTO user_info VALUES";
 
     var insert_query = sql_query + "('" + customer_id + "','" + name + "','" + email + "','" + phone + "','" + password  + "');";
     insert_query += "INSERT INTO customer_info VALUES";
-    insert_query += "('" + customer_id + "','" + '0' +"')";
+    insert_query += "('" + customer_id + "','" + '0' +"'); commit;";
 
     console.log(insert_query);
 
     pool.query(insert_query, (err, data) => {
       if (err) {
-        return res.render('signup_success', {name:name, error:err.message});
+        return res.render('app_success', {name:name, error:err.message});
       }
 		  res.render('signup_success', {name:name});
     });
