@@ -1,27 +1,53 @@
 # FindPetCaring
 
+## Introduction
+This is a website where you can find a pet sitter for your pets when you are not free. 
+At this website, you can:<br>
+- View intro:<br><br><img src="https://github.com/dabaitudiu/PetBoarding/blob/master/images/index.png" width="60%">
+
+- Specify your preferences and pick the best sitter that fits your requirements:<br><br><img src="https://github.com/dabaitudiu/PetBoarding/blob/master/images/select.png" width="60%">
+
+- Check a service provider's profile:<br><br><img src="https://github.com/dabaitudiu/PetBoarding/blob/master/images/profile.png" width="60%">
+
+- Register as a member:<br><br><img src="https://github.com/dabaitudiu/PetBoarding/blob/master/images/register.png" width="60%">
+
+- Make an appointment with the service provider:<br><br><img src="https://github.com/dabaitudiu/PetBoarding/blob/master/images/appointment.png" width="60%">
+
+- Check your order status:<br><br><img src="https://github.com/dabaitudiu/PetBoarding/blob/master/images/check_order_status.png" width="60%">
+
+
+- As a service provider, you have your own backstage:<br><br><img src="https://github.com/dabaitudiu/PetBoarding/blob/master/images/formal_backstage.png" width="60%">
+
+
+
+
 ## How to deploy this project
 
-### 1 Database Generation
-Scripts are in ./tables
+#### 0 Install nodejs
 
+#### 1 Database Generation
 ```
 Run in the following sequence:
-1. user_info
-2. owner_info
-3. customer_info
-4. pet_info
-5. customer_pet_info
-6. appointments
-7. owner_appointments
-8. customer_appointments
-9. reviews
-10. service
-11. owner_service
-12. factions
+1. \i tables/user_info.sql
+2. \i owner_info.sql
+3. \i customer_info.sql
+4. \i pet_info.sql
+5. \i customer_pet_info.sql
+6. \i appointments.sql
+7. \i owner_appointments.sql
+8. \i customer_appointments.sql
+9. \i reviews.sql
+10. \i service.sql
+11. \i owner_service.sql
+12. \i factions.sql
 ```
-### 2 Change credentials of your own db
-Change db name & pwd of the db to your own (in all .js file). A console log showing successful db connection should be observed.
+
+#### 2 Run
+```shell
+cd app
+node bin/www
+```
+then go to your explorer, type: localhost:3000
 
 ### Page Clarification
 **to view all functions without front-end, approach to branch01**
