@@ -29,7 +29,7 @@ CREATE TABLE Cutomer_pet_info(
 	pet_id 			VARCHAR(10),
 	PRIMARY KEY (pet_id),
 	FOREIGN KEY (customer_id) REFERENCES Customer_info (customer_id),
-	FOREIGN KEY (pet_id) REFERENCES Pet_info (pet_id),
+	FOREIGN KEY (pet_id) REFERENCES Pet_info (pet_id)
 );
 
 CREATE TABLE Owner_info (
@@ -40,7 +40,7 @@ CREATE TABLE Owner_info (
 	owner_address		VARCHAR(50) NOT NULL,
 	owner_states        VARCHAR(50) NOT NULL,
 	PRIMARY KEY (owner_id),
-	FOREIGN KEY (owner_id) REFERENCES User_info (user_id)
+	FOREIGN KEY (owner_id) REFERENCES Users_info (user_id)
 );
 
 
@@ -57,8 +57,8 @@ CREATE TABLE Owner_appointments (
 	owner_id          VARCHAR(10),
 	appointment_id    VARCHAR(10),
 	PRIMARY KEY (appointment_id),
-	FOREIGN KEY owner_id REFERENCES Owner_info(owner_id),
-	FOREIGN KEY appointment_id REFERENCES Appointments(appointment_id)
+	FOREIGN KEY (owner_id) REFERENCES Owner_info(owner_id),
+	FOREIGN KEY (appointment_id) REFERENCES Appointments(appointment_id)
 );
 
 
@@ -66,8 +66,8 @@ CREATE TABLE Customer_appointments (
 	customer_id          VARCHAR(10),
 	appointment_id    VARCHAR(10),
 	PRIMARY KEY (appointment_id),
-	FOREIGN KEY customer_id REFERENCES Customer_info(customer_id),
-	FOREIGN KEY appointment_id REFERENCES Appointments(appointment_id),
+	FOREIGN KEY (customer_id) REFERENCES Customer_info(customer_id),
+	FOREIGN KEY (appointment_id) REFERENCES Appointments(appointment_id)
 );
 
 
@@ -75,9 +75,9 @@ CREATE TABLE Reviews (
 	review_title	    VARCHAR(50),
 	appointment_id      VARCHAR(10),
 	ratings             INT,
-	PRIMARY KEY (review_title, appointment_id,
-	FOREIGN KEY (appointment_id) REFERENCES Appointments (appointment_id) 
-	ON DELETE CASCADE,
+	PRIMARY KEY (review_title, appointment_id),
+	FOREIGN KEY (appointment_id) REFERENCES Appointments(appointment_id) 
+	ON DELETE CASCADE
 );
 
 
@@ -96,7 +96,7 @@ CREATE TABLE Owner_service(
 	service_id    VARCHAR(10),
 	owner_id      VARCHAR(10),
 	FOREIGN KEY (service_id) REFERENCES Service (service_id),
-	FOREIGN KEY (owner_id) REFERENCES Onwer_info(Owner_id),
+	FOREIGN KEY (owner_id) REFERENCES Owner_info(Owner_id),
 	PRIMARY KEY (service_id)
 );
 
@@ -105,22 +105,5 @@ CREATE TABLE Owner_states (
 	owner_id      VARCHAR(10),
     group_name    VARCHAR(12),
     PRIMARY KEY (owner_id),
-    FOREIGN KEY owner_id REFERENCES Owner_info(owner_id)
+    FOREIGN KEY (owner_id) REFERENCES Owner_info(owner_id)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

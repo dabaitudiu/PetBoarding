@@ -1,0 +1,5 @@
+CREATE ROLE postgres WITH LOGIN PASSWORD 'lyp82nLF';
+ALTER ROLE postgres CREATEDB;
+CREATE DATABASE postgres;
+\c postgres 
+\i ../DBSCRIPTS/tables_FINAL.sql;
